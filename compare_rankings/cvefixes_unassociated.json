@@ -1,0 +1,659 @@
+[
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-7152",
+      "description": "[{'lang': 'en', 'value': 'A vulnerability, which was classified as critical, has been found in MicroPython 1.21.0/1.22.0-preview. Affected by this issue is the function poll_set_add_fd of the file extmod/modselect.c. The manipulation leads to use after free. The exploit has been disclosed to the public and may be used. The patch is identified as 8b24aa36ba978eafc6114b6798b47b7bfecdca26. It is recommended to apply a patch to fix this issue. VDB-249158 is the identifier assigned to this vulnerability.'}]",
+      "cwe_number": 416
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2012-10017",
+      "description": "[{'lang': 'en', 'value': 'A vulnerability was found in BestWebSoft Portfolio Plugin up to 2.04 on WordPress. It has been classified as problematic. This affects an unknown part. The manipulation leads to cross-site request forgery. It is possible to initiate the attack remotely. Upgrading to version 2.06 is able to address this issue. The patch is named 68af950330c3202a706f0ae9bbb52ceaa17dda9d. It is recommended to upgrade the affected component. The associated identifier of this vulnerability is VDB-248955.'}]",
+      "cwe_number": 352
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-25658",
+      "description": "[{'lang': 'en', 'value': 'TensorFlow is an open source platform for machine learning. Prior to versions 2.12.0 and 2.11.1, an out of bounds read is in GRUBlockCellGrad. A fix is included in TensorFlow 2.12.0 and 2.11.1.\\n'}]",
+      "cwe_number": 125
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2018-11757",
+      "description": "[{'lang': 'en', 'value': 'In Docker Skeleton Runtime for Apache OpenWhisk, a Docker action inheriting the Docker tag openwhisk/dockerskeleton:1.3.0 (or earlier) may allow an attacker to replace the user function inside the container if the user code is vulnerable to code exploitation.'}]",
+      "cwe_number": null
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-25657",
+      "description": "[{'lang': 'en', 'value': 'Nautobot is a Network Source of Truth and Network Automation Platform. All users of Nautobot versions earlier than 1.5.7 are impacted by a remote code execution vulnerability. Nautobot did not properly sandbox Jinja2 template rendering. In Nautobot 1.5.7 has enabled sandboxed environments for the Jinja2 template engine used internally for template rendering for the following objects: `extras.ComputedField`, `extras.CustomLink`, `extras.ExportTemplate`, `extras.Secret`, `extras.Webhook`. While no active exploits of this vulnerability are known this change has been made as a preventative measure to protect against any potential remote code execution attacks utilizing maliciously crafted template code. This change forces the Jinja2 template engine to use a `SandboxedEnvironment` on all new installations of Nautobot. This addresses any potential unsafe code execution everywhere the helper function `nautobot.utilities.utils.render_jinja2` is called. Additionally, the documentation that had previously suggesting the direct use of `jinja2.Template` has been revised to suggest `render_jinja2`. Users are advised to upgrade to Nautobot 1.5.7 or newer. For users that are unable to upgrade to the latest release of Nautobot, you may add the following setting to your `nautobot_config.py` to apply the sandbox environment enforcement: `TEMPLATES[1][\"OPTIONS\"][\"environment\"] = \"jinja2.sandbox.SandboxedEnvironment\"` After applying this change, you must restart all Nautobot services, including any Celery worker processes. **Note:** *Nautobot specifies two template engines by default, the first being \u201cdjango\u201d for the Django built-in template engine, and the second being \u201cjinja\u201d for the Jinja2 template engine. This recommended setting will update the second item in the list of template engines, which is the Jinja2 engine.* For users that are unable to immediately update their configuration such as if a Nautobot service restart is too disruptive to operations, access to provide custom Jinja2 template values may be mitigated using permissions to restrict \u201cchange\u201d (write) actions to the affected object types listed in the first section. **Note:** *This solution is intended to be stopgap until you can successfully update your `nautobot_config.py` or upgrade your Nautobot instance to apply the sandboxed environment enforcement.*'}]",
+      "cwe_number": null
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-41897",
+      "description": "[{'lang': 'en', 'value': 'TensorFlow is an open source platform for machine learning. If `FractionMaxPoolGrad` is given outsize inputs `row_pooling_sequence` and `col_pooling_sequence`, TensorFlow will crash. We have patched the issue in GitHub commit d71090c3e5ca325bdf4b02eb236cfb3ee823e927. The fix will be included in TensorFlow 2.11. We will also cherrypick this commit on TensorFlow 2.10.1, 2.9.3, and TensorFlow 2.8.4, as these are also affected and still in supported range.'}]",
+      "cwe_number": 125
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2021-27138",
+      "description": "[{'lang': 'en', 'value': 'The boot loader in Das U-Boot before 2021.04-rc2 mishandles use of unit addresses in a FIT.'}]",
+      "cwe_number": null
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2019-18604",
+      "description": "[{'lang': 'en', 'value': 'In axohelp.c before 1.3 in axohelp in axodraw2 before 2.1.1b, as distributed in TeXLive and other collections, sprintf is mishandled.'}]",
+      "cwe_number": null
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2015-10060",
+      "description": "[{'lang': 'en', 'value': 'A vulnerability was found in MNBikeways database and classified as critical. This issue affects some unknown processing of the file Data/views.py. The manipulation of the argument id1/id2 leads to sql injection. The identifier of the patch is 829a027aca7c17f5a7ec1addca8dd5d5542f86ac. It is recommended to apply a patch to fix this issue. The identifier VDB-218417 was assigned to this vulnerability.'}]",
+      "cwe_number": 89
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-4968",
+      "description": "[{'lang': 'en', 'value': 'netplan leaks the private key of wireguard to local users. Versions after 1.0 are not affected.'}]",
+      "cwe_number": null
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2016-6639",
+      "description": "[{'lang': 'en', 'value': 'Cloud Foundry PHP Buildpack (aka php-buildpack) before 4.3.18 and PHP Buildpack Cf-release before 242, as used in Pivotal Cloud Foundry (PCF) Elastic Runtime before 1.6.38 and 1.7.x before 1.7.19 and other products, place the .profile file in the htdocs directory, which might allow remote attackers to obtain sensitive information via an HTTP GET request for this file.'}]",
+      "cwe_number": 254
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-48220",
+      "description": "[{'lang': 'en', 'value': 'Decidim is a participatory democracy framework. Starting in version 0.4.rc3 and prior to version 2.0.9 of the `devise_invitable` gem, the invites feature allows users to accept the invitation for an unlimited amount of time through the password reset functionality. This issue creates vulnerable dependencies starting in version 0.0.1.alpha3 and prior to versions 0.26.9, 0.27.5, and 0.28.0 of the `decidim,` `decidim-admin`, and `decidim-system` gems. When using the password reset functionality, the `devise_invitable` gem always accepts the pending invitation if the user has been invited. The only check done is if the user has been invited but the code does not ensure that the pending invitation is still valid as defined by the `invite_for` expiry period. Decidim sets this configuration to `2.weeks` so this configuration should be respected. The bug is in the `devise_invitable` gem and should be fixed there and the dependency should be upgraded in Decidim once the fix becomes available. `devise_invitable` to version `2.0.9` and above fix this issue. Versions 0.26.9, 0.27.5, and 0.28.0 of the `decidim,` `decidim-admin`, and `decidim-system` gems contain this fix. As a workaround, invitations can be cancelled directly from the database.'}]",
+      "cwe_number": null
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-41888",
+      "description": "[{'lang': 'en', 'value': 'TensorFlow is an open source platform for machine learning. When running on GPU, `tf.image.generate_bounding_box_proposals` receives a `scores` input that must be of rank 4 but is not checked. We have patched the issue in GitHub commit cf35502463a88ca7185a99daa7031df60b3c1c98. The fix will be included in TensorFlow 2.11. We will also cherrypick this commit on TensorFlow 2.10.1, 2.9.3, and TensorFlow 2.8.4, as these are also affected and still in supported range.'}]",
+      "cwe_number": 20
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2013-2012",
+      "description": "[{'lang': 'en', 'value': 'autojump before 21.5.8 allows local users to gain privileges via a Trojan horse custom_install directory in the current working directory.'}]",
+      "cwe_number": 269
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-45134",
+      "description": "[{'lang': 'en', 'value': \"XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. `org.xwiki.platform:xwiki-platform-web` starting in version 3.1-milestone-1 and prior to 13.4-rc-1, `org.xwiki.platform:xwiki-platform-web-templates` prior to versions 14.10.2 and 15.5-rc-1, and `org.xwiki.platform:xwiki-web-standard` starting in version 2.4-milestone-2 and prior to version 3.1-milestone-1 are vulnerable to cross-site scripting. An attacker can create a template provider on any document that is part of the wiki (could be the attacker's user profile) that contains malicious code. This code is executed when this template provider is selected during document creation which can be triggered by sending the user to a URL. For the attacker, the only requirement is to have an account as by default the own user profile is editable. This allows an attacker to execute arbitrary actions with the rights of the user opening the malicious link. Depending on the rights of the user, this may allow remote code execution and full read and write access to the whole XWiki installation. This has been patched in `org.xwiki.platform:xwiki-platform-web` 13.4-rc-1, `org.xwiki.platform:xwiki-platform-web-templates` 14.10.2 and 15.5-rc-1, and `org.xwiki.platform:xwiki-web-standard` 3.1-milestone-1 by adding the appropriate escaping. The vulnerable template file createinline.vm is part of XWiki's WAR and can be patched by manually applying the changes from the fix.\"}]",
+      "cwe_number": 79
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-0297",
+      "description": "[{'lang': 'en', 'value': 'Code Injection in GitHub repository pyload/pyload prior to 0.5.0b3.dev31.'}]",
+      "cwe_number": 94
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2016-10215",
+      "description": "[{'lang': 'en', 'value': 'An issue was discovered in Fastspot BigTree bigtree-form-builder before 1.2. The vulnerability exists due to insufficient filtration of user-supplied data in multiple HTTP POST parameters passed to a \"site/index.php/../../extensions/com.fastspot.form-builder/ajax/redraw-field.php\" URL. An attacker could execute arbitrary HTML and script code in a browser in the context of the vulnerable website.'}]",
+      "cwe_number": 79
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2021-3794",
+      "description": "[{'lang': 'en', 'value': 'vuelidate is vulnerable to Inefficient Regular Expression Complexity'}]",
+      "cwe_number": null
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2024-34061",
+      "description": "[{'lang': 'en', 'value': 'changedetection.io is a free open source web page change detection, website watcher, restock monitor and notification service. In affected versions Input in parameter notification_urls is not processed resulting in javascript execution in the application. A reflected XSS vulnerability happens when the user input from a URL or POST data is reflected on the page without being stored, thus allowing the attacker to inject malicious content. This issue has been addressed in version 0.45.22. Users are advised to upgrade. There are no known workarounds for this vulnerability.'}]",
+      "cwe_number": null
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-43791",
+      "description": "[{'lang': 'en', 'value': 'Label Studio is a multi-type data labeling and annotation tool with standardized output format. There is a vulnerability that can be chained within the ORM Leak vulnerability to impersonate any account on Label Studio. An attacker could exploit these vulnerabilities to escalate their privileges from a low privilege user to a Django Super Administrator user. The vulnerability was found to affect versions before `1.8.2`, where a patch was introduced.'}]",
+      "cwe_number": 200
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2024-39303",
+      "description": "[{'lang': 'en', 'value': \"Weblate is a web based localization tool. Prior to version 5.6.2, Weblate didn't correctly validate filenames when restoring project backup. It may be possible to gain unauthorized access to files on the server using a crafted ZIP file. This issue has been addressed in Weblate 5.6.2. As a workaround, do not allow untrusted users to create projects.\"}]",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2019-15810",
+      "description": "[{'lang': 'en', 'value': 'Insufficient sanitization during device search in Netdisco 2.042010 allows for reflected XSS via manipulation of a URL parameter.'}]",
+      "cwe_number": 79
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2014-125108",
+      "description": "[{'lang': 'en', 'value': 'A vulnerability was found in w3c online-spellchecker-py up to 20140130. It has been rated as problematic. This issue affects some unknown processing of the file spellchecker. The manipulation leads to cross site scripting. The attack may be initiated remotely. The complexity of an attack is rather high. The exploitation is known to be difficult. The identifier of the patch is d6c21fd8187c5db2a50425ff80694149e75d722e. It is recommended to apply a patch to fix this issue. The identifier VDB-248849 was assigned to this vulnerability.'}]",
+      "cwe_number": 79
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-43796",
+      "description": "[{'lang': 'en', 'value': 'Synapse is an open-source Matrix homeserver Prior to versions 1.95.1 and 1.96.0rc1, cached device information of remote users can be queried from Synapse. This can be used to enumerate the remote users known to a homeserver. System administrators are encouraged to upgrade to Synapse 1.95.1 or 1.96.0rc1 to receive a patch. As a workaround, the `federation_domain_whitelist` can be used to limit federation traffic with a homeserver.\\n'}]",
+      "cwe_number": null
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2024-22416",
+      "description": "[{'lang': 'en', 'value': 'pyLoad is a free and open-source Download Manager written in pure Python. The `pyload` API allows any API call to be made using GET requests. Since the session cookie is not set to `SameSite: strict`, this opens the library up to severe attack possibilities via a Cross-Site Request Forgery (CSRF) attack. As a result any API call can be made via a CSRF attack by an unauthenticated user. This issue has been addressed in release `0.5.0b3.dev78`. All users are advised to upgrade.'}]",
+      "cwe_number": 352
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-4125",
+      "description": "[{'lang': 'en', 'value': 'Weak Password Requirements in GitHub repository answerdev/answer prior to v1.1.0.'}]",
+      "cwe_number": 521
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-4644",
+      "description": "[{'lang': 'en', 'value': 'Open Redirect in GitHub repository ikus060/rdiffweb prior to 2.5.4.'}]",
+      "cwe_number": 601
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2024-32971",
+      "description": "[{'lang': 'en', 'value': 'Apollo Router is a configurable, graph router written in Rust to run a federated supergraph that uses Apollo Federation 2. The affected versions of Apollo Router contain a bug that in limited circumstances, could lead to unexpected operations being executed which can result in unintended data or effects. This only affects Router instances configured to use distributed query plan caching. The root cause of this defect is a bug in Apollo Router\u2019s cache retrieval logic: When this defect is present and distributed query planning caching is enabled, asking the Router to execute an operation (whether it is a query, a mutation, or a subscription) may result in an unexpected variation of that operation being executed or the generation of unexpected errors. The issue stems from inadvertently executing a modified version of a previously executed operation, whose query plan is stored in the underlying cache (specifically, Redis). Depending on the type of the operation, the result may vary. For a query, results may be fetched that don\u2019t match what was requested (e.g., rather than running `fetchUsers(type: ENTERPRISE)` the Router may run `fetchUsers(type: TRIAL)`. For a mutation, this may result in incorrect mutations being sent to underlying subgraph servers (e.g., rather than sending `deleteUser(id: 10)` to a subgraph, the Router may run `deleteUser(id: 12)`. Users who are using distributed query plan caching, are advised to either upgrade to version 1.45.1 or above or downgrade to version 1.43.2 of the Apollo Router. Apollo Router versions 1.44.0 or 1.45.0 are not recommended for use and have been withdrawn. Users unable to upgrade can disable distributed query plan caching to mitigate this issue.'}]",
+      "cwe_number": null
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2021-43572",
+      "description": "[{'lang': 'en', 'value': 'The verify function in the Stark Bank Python ECDSA library (aka starkbank-escada or ecdsa-python) before 2.0.1 fails to check that the signature is non-zero, which allows attackers to forge signatures on arbitrary messages.'}]",
+      "cwe_number": 347
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2020-26759",
+      "description": "[{'lang': 'en', 'value': 'clickhouse-driver before 0.1.5 allows a malicious clickhouse server to trigger a crash or execute arbitrary code (on a database client) via a crafted server response, due to a buffer overflow.'}]",
+      "cwe_number": 120
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-46746",
+      "description": "[{'lang': 'en', 'value': 'PostHog provides open-source product analytics, session recording, feature flagging and A/B testing that you can self-host. A server-side request forgery (SSRF), which can only be exploited by authenticated users, was found in Posthog. Posthog did not verify whether a URL was local when enabling webhooks, allowing authenticated users to forge a POST request. This vulnerability has been addressed in `22bd5942` and will be included in subsequent releases. There are no known workarounds for this vulnerability.'}]",
+      "cwe_number": 918
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-3765",
+      "description": "[{'lang': 'en', 'value': 'Absolute Path Traversal in GitHub repository mlflow/mlflow prior to 2.5.0.'}]",
+      "cwe_number": 36
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-35940",
+      "description": "[{'lang': 'en', 'value': 'TensorFlow is an open source platform for machine learning. The `RaggedRangOp` function takes an argument `limits` that is eventually used to construct a `TensorShape` as an `int64`. If `limits` is a very large float, it can overflow when converted to an `int64`. This triggers an `InvalidArgument` but also throws an abort signal that crashes the program. We have patched the issue in GitHub commit 37cefa91bee4eace55715eeef43720b958a01192. The fix will be included in TensorFlow 2.10.0. We will also cherrypick this commit on TensorFlow 2.9.1, TensorFlow 2.8.1, and TensorFlow 2.7.2, as these are also affected and still in supported range. There are no known workarounds for this issue.'}]",
+      "cwe_number": 190
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-2816",
+      "description": "[{'lang': 'en', 'value': 'Out-of-bounds Read in GitHub repository vim/vim prior to 9.0.0212.'}]",
+      "cwe_number": 125
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2019-20138",
+      "description": "[{'lang': 'en', 'value': \"The HTTP Authentication library before 2019-12-27 for Nim has weak password hashing because the default algorithm for libsodium's crypto_pwhash_str is not used.\"}]",
+      "cwe_number": 327
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2021-25925",
+      "description": "[{'lang': 'en', 'value': 'in SiCKRAGE, versions 4.2.0 to 10.0.11.dev1 are vulnerable to Stored Cross-Site-Scripting (XSS) due to user input not being validated properly when processed by the server. Therefore, an attacker can inject arbitrary JavaScript code inside the application, and possibly steal a user\u2019s sensitive information.'}]",
+      "cwe_number": 79
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-22451",
+      "description": "[{'lang': 'en', 'value': 'Kiwi TCMS is an open source test management system. In version 11.6 and prior, when users register new accounts and/or change passwords, there is no validation in place which would prevent them from picking an easy to guess password. This issue is resolved by providing defaults for the `AUTH_PASSWORD_VALIDATORS` configuration setting. As of version 11.7, the password can\u2019t be too similar to other personal information, must contain at least 10 characters, can\u2019t be a commonly used password, and can\u2019t be entirely numeric. As a workaround, an administrator may reset all passwords in Kiwi TCMS if they think a weak password may have been chosen.'}]",
+      "cwe_number": 521
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-1770",
+      "description": "[{'lang': 'en', 'value': 'Improper Privilege Management in GitHub repository polonel/trudesk prior to 1.2.2.'}]",
+      "cwe_number": 269
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-41946",
+      "description": "[{'lang': 'en', 'value': \"pgjdbc is an open source postgresql JDBC Driver. In affected versions a prepared statement using either `PreparedStatement.setText(int, InputStream)` or `PreparedStatemet.setBytea(int, InputStream)` will create a temporary file if the InputStream is larger than 2k. This will create a temporary file which is readable by other users on Unix like systems, but not MacOS. On Unix like systems, the system's temporary directory is shared between all users on that system. Because of this, when files and directories are written into this directory they are, by default, readable by other users on that same system. This vulnerability does not allow other users to overwrite the contents of these directories or files. This is purely an information disclosure vulnerability. Because certain JDK file system APIs were only added in JDK 1.7, this this fix is dependent upon the version of the JDK you are using. Java 1.7 and higher users: this vulnerability is fixed in 4.5.0. Java 1.6 and lower users: no patch is available. If you are unable to patch, or are stuck running on Java 1.6, specifying the java.io.tmpdir system environment variable to a directory that is exclusively owned by the executing user will mitigate this vulnerability.\"}]",
+      "cwe_number": 668
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2018-25051",
+      "description": "[{'lang': 'en', 'value': 'A vulnerability, which was classified as problematic, was found in JmPotato Pomash. This affects an unknown part of the file Pomash/theme/clean/templates/editor.html. The manipulation of the argument article.title/content.title/article.tag leads to cross site scripting. It is possible to initiate the attack remotely. The name of the patch is be1914ef0a6808e00f51618b2de92496a3604415. It is recommended to apply a patch to fix this issue. The identifier VDB-216957 was assigned to this vulnerability.'}]",
+      "cwe_number": 79
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2021-41212",
+      "description": "[{'lang': 'en', 'value': 'TensorFlow is an open source platform for machine learning. In affected versions the shape inference code for `tf.ragged.cross` can trigger a read outside of bounds of heap allocated array. The fix will be included in TensorFlow 2.7.0. We will also cherrypick this commit on TensorFlow 2.6.1, TensorFlow 2.5.2, and TensorFlow 2.4.4, as these are also affected and still in supported range.'}]",
+      "cwe_number": 125
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-4885",
+      "description": "[{'lang': 'en', 'value': 'A vulnerability has been found in sviehb jefferson up to 0.3 and classified as critical. This vulnerability affects unknown code of the file src/scripts/jefferson. The manipulation leads to path traversal. The attack can be initiated remotely. The complexity of an attack is rather high. The exploitation appears to be difficult. Upgrading to version 0.4 is able to address this issue. The name of the patch is 53b3f2fc34af0bb32afbcee29d18213e61471d87. It is recommended to upgrade the affected component. The identifier of this vulnerability is VDB-218020.'}]",
+      "cwe_number": 22
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-21656",
+      "description": "[{'lang': 'en', 'value': 'Envoy is an open source edge and service proxy, designed for cloud-native applications. The default_validator.cc implementation used to implement the default certificate validation routines has a \"type confusion\" bug when processing subjectAltNames. This processing allows, for example, an rfc822Name or uniformResourceIndicator to be authenticated as a domain name. This confusion allows for the bypassing of nameConstraints, as processed by the underlying OpenSSL/BoringSSL implementation, exposing the possibility of impersonation of arbitrary servers. As a result Envoy will trust upstream certificates that should not be trusted.'}]",
+      "cwe_number": 843
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2020-28919",
+      "description": "[{'lang': 'en', 'value': 'A stored cross site scripting (XSS) vulnerability in Checkmk 1.6.0x prior to 1.6.0p19 allows an authenticated remote attacker to inject arbitrary JavaScript via a javascript: URL in a view title.'}]",
+      "cwe_number": 79
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-25171",
+      "description": "[{'lang': 'en', 'value': 'Kiwi TCMS, an open source test management system, does not impose rate limits in versions prior to 12.0. This makes it easier to attempt denial-of-service attacks against the Password reset page. An attacker could potentially send a large number of emails if they know the email addresses of users in Kiwi TCMS. Additionally that may strain SMTP resources. Users should upgrade to v12.0 or later to receive a patch. As potential workarounds, users may install and configure a rate-limiting proxy in front of Kiwi TCMS and/or configure rate limits on their email server when possible.'}]",
+      "cwe_number": 770
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2020-5240",
+      "description": "[{'lang': 'en', 'value': 'In wagtail-2fa before 1.4.1, any user with access to the CMS can view and delete other users 2FA devices by going to the correct path. The user does not require special permissions in order to do so. By deleting the other users device they can disable the target users 2FA devices and potentially compromise the account if they figure out their password. The problem has been patched in version 1.4.1.'}]",
+      "cwe_number": 863
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2018-25076",
+      "description": "[{'lang': 'en', 'value': 'A vulnerability classified as critical was found in Events Extension on BigTree. Affected by this vulnerability is the function getRandomFeaturedEventByDate/getUpcomingFeaturedEventsInCategoriesWithSubcategories/recacheEvent/searchResults of the file classes/events.php. The manipulation leads to sql injection. The patch is named 11169e48ab1249109485fdb1e0c9fca3d25ba01d. It is recommended to apply a patch to fix this issue. The associated identifier of this vulnerability is VDB-218395.'}]",
+      "cwe_number": 89
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2020-5224",
+      "description": "[{'lang': 'en', 'value': 'In Django User Sessions (django-user-sessions) before 1.7.1, the views provided allow users to terminate specific sessions. The session key is used to identify sessions, and thus included in the rendered HTML. In itself this is not a problem. However if the website has an XSS vulnerability, the session key could be extracted by the attacker and a session takeover could happen.'}]",
+      "cwe_number": 326
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-41547",
+      "description": "[{'lang': 'en', 'value': 'Mobile Security Framework (MobSF) v0.9.2 and below was discovered to contain a local file inclusion (LFI) vulnerability in the StaticAnalyzer/views.py script. This vulnerability allows attackers to read arbitrary files via a crafted HTTP request.'}]",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2014-125070",
+      "description": "[{'lang': 'en', 'value': 'A vulnerability has been found in yanheven console and classified as problematic. Affected by this vulnerability is the function get_zone_hosts/AvailabilityZonesTable of the file openstack_dashboard/dashboards/admin/aggregates/tables.py. The manipulation leads to cross site scripting. The attack can be launched remotely. The patch is named ba908ae88d5925f4f6783eb234cc4ea95017472b. It is recommended to apply a patch to fix this issue. The associated identifier of this vulnerability is VDB-217651.'}]",
+      "cwe_number": 79
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2020-9038",
+      "description": "[{'lang': 'en', 'value': 'Joplin through 1.0.184 allows Arbitrary File Read via XSS.'}]",
+      "cwe_number": 79
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2024-4315",
+      "description": "[{'lang': 'en', 'value': \"parisneo/lollms version 9.5 is vulnerable to Local File Inclusion (LFI) attacks due to insufficient path sanitization. The `sanitize_path_from_endpoint` function fails to properly sanitize Windows-style paths (backward slash `\\\\`), allowing attackers to perform directory traversal attacks on Windows systems. This vulnerability can be exploited through various routes, including `personalities` and `/del_preset`, to read or delete any file on the Windows filesystem, compromising the system's availability.\"}]",
+      "cwe_number": 98
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-0338",
+      "description": "[{'lang': 'en', 'value': 'Insertion of Sensitive Information into Log File in Conda loguru prior to 0.5.3.\\n\\n'}]",
+      "cwe_number": 532
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-25661",
+      "description": "[{'lang': 'en', 'value': 'TensorFlow is an Open Source Machine Learning Framework. In versions prior to 2.11.1 a malicious invalid input crashes a tensorflow model (Check Failed) and can be used to trigger a denial of service attack. A proof of concept can be constructed with the `Convolution3DTranspose` function. This Convolution3DTranspose layer is a very common API in modern neural networks. The ML models containing such vulnerable components could be deployed in ML applications or as cloud services. This failure could be potentially used to trigger a denial of service attack on ML cloud services. An attacker must have privilege to provide input to a `Convolution3DTranspose` call. This issue has been patched and users are advised to upgrade to version 2.11.1. There are no known workarounds for this vulnerability.'}]",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2021-32731",
+      "description": "[{'lang': 'en', 'value': 'XWiki Platform is a generic wiki platform offering runtime services for applications built on top of it. Between (and including) versions 13.1RC1 and 13.1, the reset password form reveals the email address of users just by giving their username. The problem has been patched on XWiki 13.2RC1. As a workaround, it is possible to manually modify the `resetpasswordinline.vm` to perform the changes made to mitigate the vulnerability.'}]",
+      "cwe_number": 200
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-23949",
+      "description": "[{'lang': 'en', 'value': 'In Keylime before 6.3.0, unsanitized UUIDs can be passed by a rogue agent and can lead to log spoofing on the verifier and registrar.'}]",
+      "cwe_number": 290
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2020-15100",
+      "description": "[{'lang': 'en', 'value': 'In freewvs before 0.1.1, a user could create a large file that freewvs will try to read, which will terminate a scan process. This has been patched in 0.1.1.'}]",
+      "cwe_number": 770
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2013-7177",
+      "description": "[{'lang': 'en', 'value': 'config/filter.d/cyrus-imap.conf in the cyrus-imap filter in Fail2ban before 0.8.11 allows remote attackers to trigger the blocking of an arbitrary IP address via a crafted e-mail address that matches an improperly designed regular expression.'}]",
+      "cwe_number": 20
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-47128",
+      "description": "[{'lang': 'en', 'value': 'Piccolo is an object-relational mapping and query builder which supports asyncio. Prior to version 1.1.1, the handling of named transaction `savepoints` in all database implementations is vulnerable to SQL Injection via f-strings. While the likelihood of an end developer exposing a `savepoints` `name` parameter to a user is highly unlikely, it would not be unheard of. If a malicious user was able to abuse this functionality they would have essentially direct access to the database and the ability to modify data to the level of permissions associated with the database user. A non exhaustive list of actions possible based on database permissions is: Read all data stored in the database, including usernames and password hashes; insert arbitrary data into the database, including modifying existing records; and gain a shell on the underlying server. Version 1.1.1 fixes this issue.'}]",
+      "cwe_number": 89
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-47116",
+      "description": "[{'lang': 'en', 'value': \"Label Studio is a popular open source data labeling tool. The vulnerability affects all versions of Label Studio prior to 1.11.0 and was tested on version 1.8.2. Label Studio's SSRF protections that can be enabled by setting the `SSRF_PROTECTION_ENABLED` environment variable can be bypassed to access internal web servers. This is because the current SSRF validation is done by executing a single DNS lookup to verify that the IP address is not in an excluded subnet range. This protection can be bypassed by either using HTTP redirection or performing a DNS rebinding attack.\"}]",
+      "cwe_number": 918
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-23602",
+      "description": "[{'lang': 'en', 'value': 'Nimforum is a lightweight alternative to Discourse written in Nim. In versions prior to 2.2.0 any forum user can create a new thread/post with an include referencing a file local to the host operating system. Nimforum will render the file if able. This can also be done silently by using NimForum\\'s post \"preview\" endpoint. Even if NimForum is running as a non-critical user, the forum.json secrets can be stolen. Version 2.2.0 of NimForum includes patches for this vulnerability. Users are advised to upgrade as soon as is possible. There are no known workarounds for this issue.'}]",
+      "cwe_number": 22
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-35981",
+      "description": "[{'lang': 'en', 'value': 'TensorFlow is an open source platform for machine learning. `FractionalMaxPoolGrad` validates its inputs with `CHECK` failures instead of with returning errors. If it gets incorrectly sized inputs, the `CHECK` failure can be used to trigger a denial of service attack. We have patched the issue in GitHub commit 8741e57d163a079db05a7107a7609af70931def4. The fix will be included in TensorFlow 2.10.0. We will also cherrypick this commit on TensorFlow 2.9.1, TensorFlow 2.8.1, and TensorFlow 2.7.2, as these are also affected and still in supported range. There are no known workarounds for this issue.'}]",
+      "cwe_number": 617
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2024-4078",
+      "description": "[{'lang': 'en', 'value': 'A vulnerability in the parisneo/lollms, specifically in the `/unInstall_binding` endpoint, allows for arbitrary code execution due to insufficient sanitization of user input. The issue arises from the lack of path sanitization when handling the `name` parameter in the `unInstall_binding` function, allowing an attacker to traverse directories and execute arbitrary code by loading a malicious `__init__.py` file. This vulnerability affects the latest version of the software. The exploitation of this vulnerability could lead to remote code execution on the system where parisneo/lollms is deployed.'}]",
+      "cwe_number": 77
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2021-37678",
+      "description": "[{'lang': 'en', 'value': 'TensorFlow is an end-to-end open source platform for machine learning. In affected versions TensorFlow and Keras can be tricked to perform arbitrary code execution when deserializing a Keras model from YAML format. The [implementation](https://github.com/tensorflow/tensorflow/blob/460e000de3a83278fb00b61a16d161b1964f15f4/tensorflow/python/keras/saving/model_config.py#L66-L104) uses `yaml.unsafe_load` which can perform arbitrary code execution on the input. Given that YAML format support requires a significant amount of work, we have removed it for now. We have patched the issue in GitHub commit 23d6383eb6c14084a8fc3bdf164043b974818012. The fix will be included in TensorFlow 2.6.0. We will also cherrypick this commit on TensorFlow 2.5.1, TensorFlow 2.4.3, and TensorFlow 2.3.4, as these are also affected and still in supported range.'}]",
+      "cwe_number": 502
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-3299",
+      "description": "[{'lang': 'en', 'value': 'A vulnerability was found in Open5GS up to 2.4.10. It has been declared as problematic. Affected by this vulnerability is an unknown functionality in the library lib/sbi/client.c of the component AMF. The manipulation leads to denial of service. The attack can be launched remotely. The name of the patch is 724fa568435dae45ef0c3a48b2aabde052afae88. It is recommended to apply a patch to fix this issue. The identifier VDB-209545 was assigned to this vulnerability.'}]",
+      "cwe_number": 404
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-50263",
+      "description": "[{'lang': 'en', 'value': \"Nautobot is a Network Source of Truth and Network Automation Platform built as a web application atop the Django Python framework with a PostgreSQL or MySQL database. In Nautobot 1.x and 2.0.x prior to 1.6.7 and 2.0.6, the URLs `/files/get/?name=...` and `/files/download/?name=...` are used to provide admin access to files that have been uploaded as part of a run request for a Job that has FileVar inputs. Under normal operation these files are ephemeral and are deleted once the Job in question runs. \\n\\nIn the default implementation used in Nautobot, as provided by `django-db-file-storage`, these URLs do not by default require any user authentication to access; they should instead be restricted to only users who have permissions to view Nautobot's `FileProxy` model instances.\\n\\nNote that no URL mechanism is provided for listing or traversal of the available file `name` values, so in practice an unauthenticated user would have to guess names to discover arbitrary files for download, but if a user knows the file name/path value, they can access it without authenticating, so we are considering this a vulnerability.\\n\\nFixes are included in Nautobot 1.6.7 and Nautobot 2.0.6. No known workarounds are available other than applying the patches included in those versions.\"}]",
+      "cwe_number": 306
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-2309",
+      "description": "[{'lang': 'en', 'value': \"NULL Pointer Dereference allows attackers to cause a denial of service (or application crash). This only applies when lxml is used together with libxml2 2.9.10 through 2.9.14. libxml2 2.9.9 and earlier are not affected. It allows triggering crashes through forged input data, given a vulnerable code sequence in the application. The vulnerability is caused by the iterwalk function (also used by the canonicalize function). Such code shouldn't be in wide-spread use, given that parsing + iterwalk would usually be replaced with the more efficient iterparse function. However, an XML converter that serialises to C14N would also be vulnerable, for example, and there are legitimate use cases for this code sequence. If untrusted input is received (also remotely) and processed via iterwalk function, a crash can be triggered.\"}]",
+      "cwe_number": 476
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2024-31992",
+      "description": "[{'lang': 'en', 'value': 'Mealie is a self hosted recipe manager and meal planner. Prior to 1.4.0, the safe_scrape_html function utilizes a user-controlled URL to issue a request to a remote server, however these requests are not rate-limited. While there are efforts to prevent DDoS by implementing a timeout on requests, it is possible for an attacker to issue a large number of requests to the server which will be handled in batches based on the configuration of the Mealie server. The chunking of responses is helpful for mitigating memory exhaustion on the Mealie server, however a single request to an arbitrarily large external file (e.g. a Debian ISO) is often sufficient to completely saturate a CPU core assigned to the Mealie container. Without rate limiting in place, it is possible to not only sustain traffic against an external target indefinitely, but also to exhaust the CPU resources assigned to the Mealie container. This vulnerability is fixed in 1.4.0.'}]",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2020-11078",
+      "description": "[{'lang': 'en', 'value': 'In httplib2 before version 0.18.0, an attacker controlling unescaped part of uri for `httplib2.Http.request()` could change request headers and body, send additional hidden requests to same server. This vulnerability impacts software that uses httplib2 with uri constructed by string concatenation, as opposed to proper urllib building with escaping. This has been fixed in 0.18.0.'}]",
+      "cwe_number": 93
+    },
+    "reason": "missing_context",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-7018",
+      "description": "[{'lang': 'en', 'value': 'Deserialization of Untrusted Data in GitHub repository huggingface/transformers prior to 4.36.'}]",
+      "cwe_number": 502
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2023-48220",
+      "description": "[{'lang': 'en', 'value': 'Decidim is a participatory democracy framework. Starting in version 0.4.rc3 and prior to version 2.0.9 of the `devise_invitable` gem, the invites feature allows users to accept the invitation for an unlimited amount of time through the password reset functionality. This issue creates vulnerable dependencies starting in version 0.0.1.alpha3 and prior to versions 0.26.9, 0.27.5, and 0.28.0 of the `decidim,` `decidim-admin`, and `decidim-system` gems. When using the password reset functionality, the `devise_invitable` gem always accepts the pending invitation if the user has been invited. The only check done is if the user has been invited but the code does not ensure that the pending invitation is still valid as defined by the `invite_for` expiry period. Decidim sets this configuration to `2.weeks` so this configuration should be respected. The bug is in the `devise_invitable` gem and should be fixed there and the dependency should be upgraded in Decidim once the fix becomes available. `devise_invitable` to version `2.0.9` and above fix this issue. Versions 0.26.9, 0.27.5, and 0.28.0 of the `decidim,` `decidim-admin`, and `decidim-system` gems contain this fix. As a workaround, invitations can be cancelled directly from the database.'}]",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2022-35969",
+      "description": "[{'lang': 'en', 'value': 'TensorFlow is an open source platform for machine learning. The implementation of `Conv2DBackpropInput` requires `input_sizes` to be 4-dimensional. Otherwise, it gives a `CHECK` failure which can be used to trigger a denial of service attack. We have patched the issue in GitHub commit 50156d547b9a1da0144d7babe665cf690305b33c. The fix will be included in TensorFlow 2.10.0. We will also cherrypick this commit on TensorFlow 2.9.1, TensorFlow 2.8.1, and TensorFlow 2.7.2, as these are also affected and still in supported range. There are no known workarounds for this issue.'}]",
+      "cwe_number": 617
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CVEFixes-Number": "CVE-2021-21332",
+      "description": "[{'lang': 'en', 'value': 'Synapse is a Matrix reference homeserver written in python (pypi package matrix-synapse). Matrix is an ecosystem for open federated Instant Messaging and VoIP. In Synapse before version 1.27.0, the password reset endpoint served via Synapse was vulnerable to cross-site scripting (XSS) attacks. The impact depends on the configuration of the domain that Synapse is deployed on, but may allow access to cookies and other browser data, CSRF vulnerabilities, and access to other resources served on the same domain or parent domains. This is fixed in version 1.27.0.'}]",
+      "cwe_number": 79
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  }
+]
