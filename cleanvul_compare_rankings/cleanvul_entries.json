@@ -1,0 +1,30 @@
+[
+  {
+    "sample_id": "CleanVulContextAssembler-1",
+    "commit_url": "https://github.com/facelessuser/pymdown-extensions/commit/b7bb4878d6017c03c8dc97c42d8d3bb6ee81db9d",
+    "repo_url": "https://github.com/facelessuser/pymdown-extensions",
+    "fix_hash": "b7bb4878d6017c03c8dc97c42d8d3bb6ee81db9d",
+    "file_name": "pymdownx/snippets.py",
+    "func_code": "def get_snippet_path(self, path):\n        \"\"\"Get snippet path.\"\"\"\n\n        snippet = None\n        for base in self.base_path:\n            if os.path.exists(base):\n                if os.path.isdir(base):\n                    filename = os.path.join(base, path)\n                    if os.path.exists(filename):\n                        snippet = filename\n                        break\n                else:\n                    basename = os.path.basename(base)\n                    dirname = os.path.dirname(base)\n                    if basename.lower() == path.lower():\n                        filename = os.path.join(dirname, path)\n                        if os.path.exists(filename):\n                            snippet = filename\n                            break\n        return snippet",
+    "cve_id": "",
+    "cwe_id": null,
+    "cwe_ids": [],
+    "vulnerability_score": 4,
+    "commit_msg": "Merge pull request from GHSA-jh85-wwv9-24hv\n\n* Add `restrict_base_path` and make it the default\n\nNew option to restrict snippets to be actual children of the base path\nfor a more sane default.\n\n* Update grammar",
+    "is_vulnerable": true
+  },
+  {
+    "sample_id": "CleanVulContextAssembler-2",
+    "commit_url": "https://github.com/facelessuser/pymdown-extensions/commit/b7bb4878d6017c03c8dc97c42d8d3bb6ee81db9d",
+    "repo_url": "https://github.com/facelessuser/pymdown-extensions",
+    "fix_hash": "b7bb4878d6017c03c8dc97c42d8d3bb6ee81db9d",
+    "file_name": "pymdownx/snippets.py",
+    "func_code": "def get_snippet_path(self, path):\n        \"\"\"Get snippet path.\"\"\"\n\n        snippet = None\n        for base in self.base_path:\n            if os.path.exists(base):\n                if os.path.isdir(base):\n                    if self.restrict_base_path:\n                        filename = os.path.abspath(os.path.join(base, path))\n                        # If the absolute path is no longer under the specified base path, reject the file\n                        if not os.path.samefile(base, os.path.dirname(filename)):\n                            continue\n                    else:\n                        filename = os.path.join(base, path)\n                    if os.path.exists(filename):\n                        snippet = filename\n                        break\n                else:\n                    dirname = os.path.dirname(base)\n                    filename = os.path.join(dirname, path)\n                    if os.path.exists(filename) and os.path.samefile(filename, base):\n                        snippet = filename\n                        break\n        return snippet",
+    "cve_id": "",
+    "cwe_id": null,
+    "cwe_ids": [],
+    "vulnerability_score": 4,
+    "commit_msg": "Merge pull request from GHSA-jh85-wwv9-24hv\n\n* Add `restrict_base_path` and make it the default\n\nNew option to restrict snippets to be actual children of the base path\nfor a more sane default.\n\n* Update grammar",
+    "is_vulnerable": false
+  }
+]
