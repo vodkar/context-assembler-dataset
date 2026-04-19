@@ -1,0 +1,119 @@
+[
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/ethyca/fides/commit/5989b5fa744c8d8c340963b895a054883549358a",
+      "description": "Merge pull request from GHSA-p6p2-qq95-vq5h\n\n* Removing custom connector template functions\n\n* Updating connector template modal description\n\n* Adding function upload tests",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/python/cpython/commit/199abac9b1bd6737df6b7d202ffdbf50728a9c50",
+      "description": "Merge remote-tracking branch 'upstream/main' into 106242",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/matrix-org/synapse/commit/181d91f988043c3380269d4aa41f0d3741ecb079",
+      "description": "Add length checks for client secret.",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/pyca/cryptography/commit/66cb448876b1e95b637461d13560b970bae09e08",
+      "description": "Fixed crash when loading a PKCS#7 bundle with no certificates",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/matrix-org/synapse/commit/1abe6ea30d51e87c19920db39e0ee37255bcd29c",
+      "description": "Fix deactivation.",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/pyinstaller/pyinstaller/commit/e8996b6e6ac4e93acdc2fd58ad1957874fa1972a",
+      "description": "rthooks: secure temp directories used by matplotlib and win32com rthooks\n\nThe run-time hooks that relocate the package's configuration/cache\ndirectory into isolated temporary directory create this directory using\nthe `tempfile.mkdtemp` function. According to its documentation, the\nfunction creates the temporary directory \"in the most secure manner\npossible\", and the created directory should be \"readable, writable, and\nsearchable only by the creating user ID\".\n\nHowever, this does not apply to Windows, where the 0o700 POSIX\npermissions mask passed to the underyling `os.mkdir` call has no effect.\nConsequently, the access to the created temporary directory is in fact\ngated only by the access to the parent directory. So as long as `TEMP`\nand `TMP` point to `%LOCALAPPDATA%\\Temp`, the created temporary\ndirectories are typically inaccessible to other users, who do not have\naccess to the user's home directory. On the other hand, if the temporary\ndirectory base is relocated to a system-wide location (e.g., `c:\\temp`),\nthe temporary directories created by the run-time hooks might become\naccessible to other users as well. A malicious user with local access\nmight thus modify the contents of the temporary directory, interfering\nwith the application. If the application is running in privileged mode\nand developer mode is enabled on the system, they might also attempt\na symlink attack due to lack of hardened mode for `shutil.rmtree`\n(used for clean up) on Windows.\n\nTherefore, we replace the use of `tempfile.mkdtemp` with custom function\nthat uses original `mkdtemp` on POSIX and provides a Windows-specific\nimplementation that secures the access to created directory via security\ndescriptor passed to the `CreateDirectoryW` call. This is a\n`ctypes`-based port of the code that we already have in bootloader for\nmitigating the same issue with temporary directory in onefile builds.\n\nIn order to share the implementation among the two run-time hooks that\nrequire it, the code is provided by a new `_pyi_rth_utils` PyInstaller\n\"fake\" package, which is bundled with the frozen application on demand\n(i.e., if it is referenced in any of collected run-time hooks).",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/awslabs/sockeye/commit/ab30839d2ae781e2803fba655c0510f89d715e9a",
+      "description": "WIP: yaml fix.",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/goauthentik/authentik/commit/38e04ae12720e5d81b4f7ac77997eb8d1275d31a",
+      "description": "security: fix CVE-2024-23647\n\nSigned-off-by: Jens Langhammer <jens@goauthentik.io>",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/ethyca/fides/commit/cd344d016b1441662a61d0759e7913e8228ed1ee",
+      "description": "Merge pull request from GHSA-jq3w-9mgf-43m4\n\n* init\n\n* feat: add non-dev-mode verification for IP addresses\n\n* fix: static_checks\n\n* feat: add tests\n\n* cleanup\n\n* feat: add better error messaging if the hostname can't resolve\n\n* fix: docstring\n\n* fix: handle special cases for templated values\n\n* feat: extract host checking and apply it to the authenticated client class\n\n* Fixing the values being passed into deny_unsafe_hosts and moving the check to before the send is executed\n\n* Removing unused import\n\n* Fixing typo and updating change log\n\n---------\n\nCo-authored-by: Adrian Galvan <adrian@ethyca.com>",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/WeblateOrg/weblate/commit/f6753a1a1c63fade6ad418fbda827c6750ab0bda",
+      "description": "translate: Add missing escaping to language name\n\nFixes https://hackerone.com/reports/1486674",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/edx/edx-platform/commit/d54f79f5bf3e1af17063937df1abc0026843412d",
+      "description": "Switch dashboard from GET to POST.",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/goauthentik/authentik/commit/cdb36b420a8520cad2377733e070a8756290758f",
+      "description": "security: fix CVE-2023-48228\n\nSigned-off-by: Jens Langhammer <jens@goauthentik.io>",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "CleanVul-CommitUrl": "https://github.com/matrix-org/synapse/commit/bbb6c3b8d9f9b4d39b9cfae40676100781124196",
+      "description": "Don't add previously rejected events to state during state res\n\nSigned-off-by: Sean Quah <seanq@matrix.org>",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  }
+]
