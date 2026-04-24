@@ -1,224 +1,8 @@
 [
   {
     "entry": {
-      "commit_url": "https://github.com/cyface/django-termsandconditions/commit/d7ec078a27fcb90a6fff1c6f8599e4b21da962ab",
-      "description": "Fix open redirect vulnerability",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/tensorflow/tensorflow/commit/698e01511f62a3c185754db78ebce0eee1f0184d",
-      "description": "Fix `tf.io.decode_raw` bugs and update documentation.\n\nFixes cases where specifying `fixed_length` resulted in data loss and even segfault and corruption of the Python interpreter. The fix is subtle but needed due to pointer arithmetic rules.\n\nMakes sure that `fixed_length` does not change the output when present but not needed.\n\nEliminates needless copy and cast in the main codepath.\n\nPiperOrigin-RevId: 371322725\nChange-Id: I514ef67a2961c86422f69d05122d31615e87896c",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/numpy/numpy/commit/0bb46c1448b0d3f5453d5182a17ea7ac5854ee15",
-      "description": "ENH: remove insecure mktemp use\n\nmktemp only returns a filename, a malicous user could replace it before\nit gets used.",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/pgadmin-org/pgadmin4/commit/01dc3e8bed088bbc0724376bf0fc725a095cf1a3",
-      "description": "Fix a security related issue where an authenticated user can run remote command using validate binary path API. #6763\nCVE-XXXX-XXXXX - request raised, number to be received.",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/pretix/pretix/commit/8583bfb7d97263e9e923ad5d7f123ca1cadc8f2e",
-      "description": "[SECURITY] Do not allow Pillow to parse EPS files",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/tensorflow/tensorflow/commit/e26467672f4252d0a22c8d20dd40dfd04d458b7f",
-      "description": "Prevent denial of service in `tf.ragged.constant`\n\nFixes #55199\n\nPiperOrigin-RevId: 442029525",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/vyperlang/vyper/commit/3c701654b4a067c19b723d019965275622aed033",
-      "description": "fix: only allow valid identifiers to be nonreentrant keys\n\ndisallow invalid identifiers like `\" \"`, `\"123abc\"` from being keys for\nnon-reentrant locks.\n\nthis commit also refactors the `validate_identifiers` helper function to\nbe in the `ast/` subdirectory, and slightly improves the VyperException\nconstructor by allowing None (optional) annotations.",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/pgadmin-org/pgadmin4/commit/f59d93a2f37cd4bea7878d59e212647ca6152fed",
-      "description": "Ensure that the authenticated users can't access each other's directories and files by providing relative paths. #5734",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/matrix-org/synapse/commit/dd2a8fb441ec5d572f8687b5c617522138afb05f",
-      "description": "Improve some validation of profile data.",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/pyca/cryptography/commit/688e0f673bfbf43fa898994326c6877f00ab19ef",
-      "description": "disallow implicit tag truncation with finalize_with_tag",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/matrix-org/synapse/commit/82c067d2e8ecce84c5eefe13d4f9df41933d9c38",
-      "description": "Apply the federation_ip_range_blacklist to well-known look-ups.\n\nThese protections were already being applied due to the use of\nIPBlacklistingResolver, but making it explicit should help ensure\nthere are fewer avenues for holes.",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/matrix-org/synapse/commit/1abe6ea30d51e87c19920db39e0ee37255bcd29c",
-      "description": "Fix deactivation.",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/ros/actionlib/commit/f269483acce2ec1e145120ccd26d9746030de776",
-      "description": "Address RVD#2401\n\nOur team at @AliasRobotics identified and reported in RVD#2401 the use of \nunsafe yaml load (https://github.com/aliasrobotics/RVD/issues/2401).\n\nAfter triaging the flaw we detected that it was  exploitable and could lead to \nlocal (or remote, based on certain common user interaction) code execution.\n\nSpecifically, the flaw itself is caused by an unsafe parsing of YAML values which \nhappens whenever an action message is processed to be sent, and allows for the \ncreation of Python objects. Through this flaw in ROS, an attacker could build a \nmalicious payload and execute arbitrary code in Python. A PoC is available but \nhave decided not to disclose it for now and until this is mitigated and debs are\navailable.\n\nPeer-researched and coded with @ibaiape.",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/ansible/ansible/commit/e5a2138219d497491d2a7e07ba558737548f0e69",
-      "description": "solaris_zone: Allow only valid characters in zone name\n\nCVE-2019-14904 - solaris_zone module accepts zone name and performs actions related to that.\nHowever, there is no user input validation done while performing actions.\nA malicious user could provide a crafted zone name which allows executing commands\ninto the server manipulating the module behaviour.\n\nAdding user input validation as per Solaris Zone documentation fixes this issue.\n\nSigned-off-by: Abhijeet Kasurde <akasurde@redhat.com>",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/py-pdf/pypdf/commit/f88a1b022de5822261abec4e7dd9fa0e457a4ee7",
-      "description": "ROB : fix infinite loop due to Invalid object\n\nfixes #1329\n*prevent loop within dictionnaries where objects not respecting standard\n*fix cmap warnings due to \"numbered\" characters ( #2d instead of -)\n*apply unnumbering to nameobject\n*add _get_indirect_object for debug/dev purpose\n*add some missing seeks (no issue reported yet)",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/ansible/ansible/commit/a45497384093efe7bcee4251de162935c63f31da",
-      "description": "Disallow use of remote home directories containing .. in their path",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/matrix-org/synapse/commit/181d91f988043c3380269d4aa41f0d3741ecb079",
-      "description": "Add length checks for client secret.",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/python-pillow/Pillow/commit/205e056f8f9b06ed7b925cf8aa0874bc4aaf8a7d",
-      "description": "Icns DOS fix --  CVE-2014-3589\n\nFound and reported by Andrew Drake of dropbox.com",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/heartexlabs/label-studio/commit/d062718a301499932b767aa7cc95bccaa0309fff",
-      "description": "Add validation to avoid local files using URL import",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/django/django/commit/5b6b257fa7ec37ff27965358800c67e2dd11c924",
-      "description": "[3.2.x] Fixed CVE-2022-41323 -- Prevented locales being interpreted as regular expressions.\n\nThanks to Benjamin Balder Bach for the report.",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/django/django/commit/eb31d845323618d688ad429479c6dda973056136",
-      "description": "Fixed CVE-2020-7471 -- Properly escaped StringAgg(delimiter) parameter.",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/gradio-app/gradio/commit/6da97f5986e7af0ad10c4702522d7f95b5a0a31a",
-      "description": "add tests",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/deeplook/svglib/commit/0c03e46d582cddfb6df6fdaf4468c6612b005428",
-      "description": "Fixes #229 - External entity loading disabled by default",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/kovidgoyal/calibre/commit/3a89718664cb8c",
-      "description": "E-book viewer: Prevent javascript in the book from accessing files on the computer using XMLHttpRequest. Fixes #1651728 [Private bug](https://bugs.launchpad.net/calibre/+bug/1651728)",
-      "cwe_number": null
-    },
-    "reason": "checkout_failed",
-    "contexts": []
-  },
-  {
-    "entry": {
-      "commit_url": "https://github.com/apache/airflow/commit/5a5f6b6308982f959c13cf2499234b74d7abea94",
-      "description": "Filter out invalid schemas in Hive hook",
+      "commit_url": "https://github.com/ghantoos/lshell/commit/da6fbdee72e48ea066b72a3b6ae2da817359b88b",
+      "description": "[security] parse quoted strings for possible commands (Closes #148, Closes #147)\n\nBoth issues #148 and #147 use the same vulnerability in the parser,\nthat ignored the quoted strings. Parsing only the rest of the line\nfor security issues. This is a major security bug.\n\nThank you Proskurin Kirill (@Oloremo) and Vladislav Yarmak (@Snawoot)\nfor reporting this!!",
       "cwe_number": null
     },
     "reason": "checkout_failed",
@@ -235,6 +19,69 @@
   },
   {
     "entry": {
+      "commit_url": "https://github.com/zulip/zulip/commit/7c2693a2c64904d1d0af8503b57763943648cbe5",
+      "description": "CVE-2023-32677: Check permission to subscribe other users in invites.\n\nThis commit updates the API to check the permission to subscribe other\nusers while inviting.  The API will error if the user passes the\n\"stream_ids\" parameter (even when it contains only default streams)\nand the calling user does not having permission to subscribe others to\nstreams.\n\nFor users who do not have permission to subscribe others, the\ninvitee will be subscribed to default streams at the time of\naccepting the invite.\n\nThere is no change for multiuse invites, since only admins are allowed\nto send them, and admins always have the permission to subscribe\nothers to streams.",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/Significant-Gravitas/Auto-GPT/commit/5bc01776ce1394f93a4dececae72f88e017ae003",
+      "description": "fix rce on execute_python_code",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/apache/airflow/commit/ddedb1df6603e4c9974d6a2da527a28046b8cc10",
+      "description": "Merge branch 'main' into fix/triggerer_log",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/tabatkins/bikeshed/commit/b2f668fca204260b1cad28d5078e93471cb6b2dd",
+      "description": "Prevent escaping the source doc's folder, or running arbitrary code, without explicit opt-in at the command-line.",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/ansible/ansible/commit/5a3dd50506b88a682fead1acf642de69f699ba37",
+      "description": "split PS wrapper and payload (CVE-2018-16859)\n\n* prevent scriptblock logging from logging payload contents\n* added tests to verify no payload contents in PS Operational event log\n* fix script action to send split-aware wrapper\n* fix CLIXML error parser (return to -EncodedCommand exposed problems with it)",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/facebook/fbthrift/commit/c5d6e07588cd03061bc54d451a7fa6e84883d62b",
+      "description": "Throw on bad types during skipping data\n\nSummary:\nThe current code silently returns on bad types. In case when we have an invalid data, we may get a container of a large size with a bad type, this would lead to us running long loop doing nothing (though we already can say that the data is invalid).\n\nThe new code would throw an exception as soon as we try to skip a value of invalid type.\n\nFixes CVE-2019-3552\n\nReviewed By: yfeldblum, stevegury\n\nDifferential Revision: D8344920\n\nfbshipit-source-id: f12e8f3442f7ad5e1a81d822380701e929b80f0d",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/zulip/zulip/commit/b7c87a4d82397a5e6ac169b6098bed0b1ae7a583",
+      "description": "CVE-2019-19775: Close open redirect in thumbnail view.\n\nThis closes an open redirect vulnerability, one case of which was\nfound by Graham Bleaney and Ibrahim Mohamed using Pysa.\n\nSigned-off-by: Anders Kaseorg <anders@zulipchat.com>",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
       "commit_url": "https://github.com/zulip/zulip/commit/e2d303c1bb5f538d17dc3d9134bc8858bdece781",
       "description": "CVE-2021-41115: Use re2 for user-supplied linkifier patterns.\n\nZulip attempts to validate that the regular expressions that admins\nenter for linkifiers are well-formatted, and only contain a specific\nsubset of regex grammar.  The process of checking these\nproperties (via a regex!) can cause denial-of-service via\nbacktracking.\n\nFurthermore, this validation itself does not prevent the creation of\nlinkifiers which themselves cause denial-of-service when they are\nexecuted.  As the validator accepts literally anything inside of a\n`(?P<word>...)` block, any quadratic backtracking expression can be\nhidden therein.\n\nSwitch user-provided linkifier patterns to be matched in the Markdown\nprocessor by the `re2` library, which is guaranteed constant-time.\nThis somewhat limits the possible features of the regular\nexpression (notably, look-head and -behind, and back-references);\nhowever, these features had never been advertised as working in the\ncontext of linkifiers.\n\nA migration removes any existing linkifiers which would not function\nunder re2, after printing them for posterity during the upgrade; they\nare unlikely to be common, and are impossible to fix automatically.\n\nThe denial-of-service in the linkifier validator was discovered by\n@erik-krogh and @yoff, as GHSL-2021-118.",
       "cwe_number": null
@@ -244,8 +91,71 @@
   },
   {
     "entry": {
-      "commit_url": "https://github.com/kovidgoyal/calibre/commit/aeb5b036a0bf657951756688b3c72bd68b6e4a7d",
-      "description": "E-book viewer: Change the file format used to import/export bookmarks to use JSON. This prevents malicious bookmarks files from causing code execution.\n\nAlso more work on the EM page for the server.",
+      "commit_url": "https://github.com/saltstack/salt/commit/5f8b5e1a0f23fe0f2be5b3c3e04199b57a53db5b",
+      "description": "Do not allow IDs with null bytes in decoded payloads",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/saltstack/salt/commit/80d90307b07b3703428ecbb7c8bb468e28a9ae6d",
+      "description": "Don't allow path separators in minion ID",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/miguelgrinberg/python-engineio/commit/b316510739d41aac79f5a1c674f7375a321178e0",
+      "description": "Address potential websocket cross-origin attacks (Fixes #128)",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/WeblateOrg/weblate/commit/46e7e58af7fba25f9e68a1e962e339da8e829f3b",
+      "description": "Do not show validation error on password reset\n\nThis can leak information whether account exists or not.\n\nFixes #1317\n\nSigned-off-by: Michal \u010ciha\u0159 <michal@cihar.com>",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/pgadmin-org/pgadmin4/commit/e2b00dda1b15a1793f365544fce2c46e47b7a47e",
+      "description": "Fixes a redirect vulnerability when the user opens the pgAdmin URL. Fixes #5343",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/python/cpython/commit/8d0ef0b5edeae52960c7ed05ae8a12388324f87e",
+      "description": "bpo-36742: Corrects fix to handle decomposition in usernames (#13812)",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/ansible/ansible/commit/5292482553dc409081f7f4368398358cbf9f8672",
+      "description": "fixed fetch traversal from slurp (#68720)\n\n* fixed fetch traversal from slurp\n\n  * ignore slurp result for dest\n  * fixed naming when source is relative\n  * fixed bug in local connection plugin\n  * added tests with fake slurp\n  * moved existing role tests into runme.sh\n  * normalized on action excepts\n  * moved dest transform down to when needed\n  * added is_subpath check\n  * fixed bug in local connection\n\nfixes #67793\n\nCVE-2019-3828\n\n(cherry picked from commit ba87c225cd13343c35075fe7fc15b4cf1343fed6)",
+      "cwe_number": null
+    },
+    "reason": "checkout_failed",
+    "contexts": []
+  },
+  {
+    "entry": {
+      "commit_url": "https://github.com/gradio-app/gradio/commit/41bd3645bdb616e1248b2167ca83636a2653f781",
+      "description": "secure path hotfix",
       "cwe_number": null
     },
     "reason": "checkout_failed",
