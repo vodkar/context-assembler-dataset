@@ -4061,34 +4061,6 @@
   },
   {
     "sample_id": "CleanVulContextAssembler-291",
-    "commit_url": "https://github.com/RasaHQ/rasa/commit/1b6b502f52d73b4f8cd1959ce724b8ad0eb33989",
-    "repo_url": "https://github.com/RasaHQ/rasa",
-    "fix_hash": "1b6b502f52d73b4f8cd1959ce724b8ad0eb33989",
-    "file_name": "rasa/model.py",
-    "func_code": "def unpack_model(\n    model_file: Text, working_directory: Optional[Union[Path, Text]] = None\n) -> TempDirectoryPath:\n    \"\"\"Unpack a zipped Rasa model.\n\n    Args:\n        model_file: Path to zipped model.\n        working_directory: Location where the model should be unpacked to.\n                           If `None` a temporary directory will be created.\n\n    Returns:\n        Path to unpacked Rasa model.\n\n    \"\"\"\n    import tarfile\n\n    if working_directory is None:\n        working_directory = tempfile.mkdtemp()\n\n    # All files are in a subdirectory.\n    try:\n        with tarfile.open(model_file, mode=\"r:gz\") as tar:\n            tar.extractall(working_directory)\n            logger.debug(f\"Extracted model to '{working_directory}'.\")\n    except (tarfile.TarError, ValueError) as e:\n        logger.error(f\"Failed to extract model at {model_file}. Error: {e}\")\n        raise\n\n    return TempDirectoryPath(working_directory)\ndef unarchive(byte_array: bytes, directory: Text) -> Text:\n    \"\"\"Tries to unpack a byte array interpreting it as an archive.\n\n    Tries to use tar first to unpack, if that fails, zip will be used.\"\"\"\n\n    try:\n        tar = tarfile.open(fileobj=IOReader(byte_array))\n        tar.extractall(directory)\n        tar.close()\n        return directory\n    except tarfile.TarError:\n        zip_ref = zipfile.ZipFile(IOReader(byte_array))\n        zip_ref.extractall(directory)\n        zip_ref.close()\n        return directory\ndef _decompress(compressed_path: Text, target_path: Text) -> None:\n\n        with tarfile.open(compressed_path, \"r:gz\") as tar:\n            tar.extractall(target_path)  # target dir will be created if it not exists",
-    "cve_id": "",
-    "cwe_id": null,
-    "cwe_ids": [],
-    "vulnerability_score": 4,
-    "commit_msg": "Swap calls to extractall for TarSafe equivalent",
-    "is_vulnerable": true
-  },
-  {
-    "sample_id": "CleanVulContextAssembler-292",
-    "commit_url": "https://github.com/RasaHQ/rasa/commit/1b6b502f52d73b4f8cd1959ce724b8ad0eb33989",
-    "repo_url": "https://github.com/RasaHQ/rasa",
-    "fix_hash": "1b6b502f52d73b4f8cd1959ce724b8ad0eb33989",
-    "file_name": "rasa/model.py",
-    "func_code": "def unpack_model(\n    model_file: Text, working_directory: Optional[Union[Path, Text]] = None\n) -> TempDirectoryPath:\n    \"\"\"Unpack a zipped Rasa model.\n\n    Args:\n        model_file: Path to zipped model.\n        working_directory: Location where the model should be unpacked to.\n                           If `None` a temporary directory will be created.\n\n    Returns:\n        Path to unpacked Rasa model.\n\n    \"\"\"\n    import tarfile\n    from tarsafe import TarSafe\n\n    if working_directory is None:\n        working_directory = tempfile.mkdtemp()\n\n    # All files are in a subdirectory.\n    try:\n        with TarSafe.open(model_file, mode=\"r:gz\") as tar:\n            tar.extractall(working_directory)\n            logger.debug(f\"Extracted model to '{working_directory}'.\")\n    except (tarfile.TarError, ValueError) as e:\n        logger.error(f\"Failed to extract model at {model_file}. Error: {e}\")\n        raise\n\n    return TempDirectoryPath(working_directory)\ndef unarchive(byte_array: bytes, directory: Text) -> Text:\n    \"\"\"Tries to unpack a byte array interpreting it as an archive.\n\n    Tries to use tar first to unpack, if that fails, zip will be used.\"\"\"\n\n    try:\n        tar = TarSafe.open(fileobj=IOReader(byte_array))\n        tar.extractall(directory)\n        tar.close()\n        return directory\n    except tarfile.TarError:\n        zip_ref = zipfile.ZipFile(IOReader(byte_array))\n        zip_ref.extractall(directory)\n        zip_ref.close()\n        return directory\ndef _decompress(compressed_path: Text, target_path: Text) -> None:\n\n        with TarSafe.open(compressed_path, \"r:gz\") as tar:\n            tar.extractall(target_path)  # target dir will be created if it not exists",
-    "cve_id": "",
-    "cwe_id": null,
-    "cwe_ids": [],
-    "vulnerability_score": 4,
-    "commit_msg": "Swap calls to extractall for TarSafe equivalent",
-    "is_vulnerable": false
-  },
-  {
-    "sample_id": "CleanVulContextAssembler-293",
     "commit_url": "https://github.com/nltk/nltk/commit/f59d7ed8df2e0e957f7f247fe218032abdbe9a10",
     "repo_url": "https://github.com/nltk/nltk",
     "fix_hash": "f59d7ed8df2e0e957f7f247fe218032abdbe9a10",
@@ -4102,7 +4074,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-294",
+    "sample_id": "CleanVulContextAssembler-292",
     "commit_url": "https://github.com/nltk/nltk/commit/f59d7ed8df2e0e957f7f247fe218032abdbe9a10",
     "repo_url": "https://github.com/nltk/nltk",
     "fix_hash": "f59d7ed8df2e0e957f7f247fe218032abdbe9a10",
@@ -4116,7 +4088,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-295",
+    "sample_id": "CleanVulContextAssembler-293",
     "commit_url": "https://github.com/theupdateframework/tuf/commit/851913b235217d91cc5ff491cc3d7edabe7662fa",
     "repo_url": "https://github.com/theupdateframework/tuf",
     "fix_hash": "851913b235217d91cc5ff491cc3d7edabe7662fa",
@@ -4130,7 +4102,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-296",
+    "sample_id": "CleanVulContextAssembler-294",
     "commit_url": "https://github.com/theupdateframework/tuf/commit/851913b235217d91cc5ff491cc3d7edabe7662fa",
     "repo_url": "https://github.com/theupdateframework/tuf",
     "fix_hash": "851913b235217d91cc5ff491cc3d7edabe7662fa",
@@ -4144,7 +4116,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-297",
+    "sample_id": "CleanVulContextAssembler-295",
     "commit_url": "https://github.com/matrix-org/sydent/commit/8936925f561b0c352c2fa922d5097d7245aad00a",
     "repo_url": "https://github.com/matrix-org/sydent",
     "fix_hash": "8936925f561b0c352c2fa922d5097d7245aad00a",
@@ -4158,7 +4130,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-298",
+    "sample_id": "CleanVulContextAssembler-296",
     "commit_url": "https://github.com/matrix-org/sydent/commit/8936925f561b0c352c2fa922d5097d7245aad00a",
     "repo_url": "https://github.com/matrix-org/sydent",
     "fix_hash": "8936925f561b0c352c2fa922d5097d7245aad00a",
@@ -4172,7 +4144,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-299",
+    "sample_id": "CleanVulContextAssembler-297",
     "commit_url": "https://github.com/ikus060/rdiffweb/commit/233befc33bdc45d4838c773d5aed4408720504c5",
     "repo_url": "https://github.com/ikus060/rdiffweb",
     "fix_hash": "233befc33bdc45d4838c773d5aed4408720504c5",
@@ -4186,7 +4158,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-300",
+    "sample_id": "CleanVulContextAssembler-298",
     "commit_url": "https://github.com/ikus060/rdiffweb/commit/233befc33bdc45d4838c773d5aed4408720504c5",
     "repo_url": "https://github.com/ikus060/rdiffweb",
     "fix_hash": "233befc33bdc45d4838c773d5aed4408720504c5",
@@ -4200,7 +4172,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-301",
+    "sample_id": "CleanVulContextAssembler-299",
     "commit_url": "https://github.com/inveniosoftware/invenio-drafts-resources/commit/039b0cff1ad4b952000f4d8c3a93f347108b6626",
     "repo_url": "https://github.com/inveniosoftware/invenio-drafts-resources",
     "fix_hash": "039b0cff1ad4b952000f4d8c3a93f347108b6626",
@@ -4214,7 +4186,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-302",
+    "sample_id": "CleanVulContextAssembler-300",
     "commit_url": "https://github.com/inveniosoftware/invenio-drafts-resources/commit/039b0cff1ad4b952000f4d8c3a93f347108b6626",
     "repo_url": "https://github.com/inveniosoftware/invenio-drafts-resources",
     "fix_hash": "039b0cff1ad4b952000f4d8c3a93f347108b6626",
@@ -4228,7 +4200,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-303",
+    "sample_id": "CleanVulContextAssembler-301",
     "commit_url": "https://github.com/urllib3/urllib3/commit/a74c9cfbaed9f811e7563cfc3dce894928e0221a",
     "repo_url": "https://github.com/urllib3/urllib3",
     "fix_hash": "a74c9cfbaed9f811e7563cfc3dce894928e0221a",
@@ -4242,7 +4214,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-304",
+    "sample_id": "CleanVulContextAssembler-302",
     "commit_url": "https://github.com/urllib3/urllib3/commit/a74c9cfbaed9f811e7563cfc3dce894928e0221a",
     "repo_url": "https://github.com/urllib3/urllib3",
     "fix_hash": "a74c9cfbaed9f811e7563cfc3dce894928e0221a",
@@ -4256,7 +4228,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-305",
+    "sample_id": "CleanVulContextAssembler-303",
     "commit_url": "https://github.com/DEMON1A/Discord-Recon/commit/26e2a084679679cccdeeabbb6889ce120eff7e50",
     "repo_url": "https://github.com/DEMON1A/Discord-Recon",
     "fix_hash": "26e2a084679679cccdeeabbb6889ce120eff7e50",
@@ -4270,7 +4242,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-306",
+    "sample_id": "CleanVulContextAssembler-304",
     "commit_url": "https://github.com/DEMON1A/Discord-Recon/commit/26e2a084679679cccdeeabbb6889ce120eff7e50",
     "repo_url": "https://github.com/DEMON1A/Discord-Recon",
     "fix_hash": "26e2a084679679cccdeeabbb6889ce120eff7e50",
@@ -4284,7 +4256,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-307",
+    "sample_id": "CleanVulContextAssembler-305",
     "commit_url": "https://github.com/pypa/pip/commit/01610be0d58bc428646126090cb2905cf219b2f4",
     "repo_url": "https://github.com/pypa/pip",
     "fix_hash": "01610be0d58bc428646126090cb2905cf219b2f4",
@@ -4298,7 +4270,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-308",
+    "sample_id": "CleanVulContextAssembler-306",
     "commit_url": "https://github.com/pypa/pip/commit/01610be0d58bc428646126090cb2905cf219b2f4",
     "repo_url": "https://github.com/pypa/pip",
     "fix_hash": "01610be0d58bc428646126090cb2905cf219b2f4",
@@ -4312,7 +4284,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-309",
+    "sample_id": "CleanVulContextAssembler-307",
     "commit_url": "https://github.com/pallets/werkzeug/commit/517cac5a804e8c4dc4ed038bb20dacd038e7a9f1",
     "repo_url": "https://github.com/pallets/werkzeug",
     "fix_hash": "517cac5a804e8c4dc4ed038bb20dacd038e7a9f1",
@@ -4326,7 +4298,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-310",
+    "sample_id": "CleanVulContextAssembler-308",
     "commit_url": "https://github.com/pallets/werkzeug/commit/517cac5a804e8c4dc4ed038bb20dacd038e7a9f1",
     "repo_url": "https://github.com/pallets/werkzeug",
     "fix_hash": "517cac5a804e8c4dc4ed038bb20dacd038e7a9f1",
@@ -4340,7 +4312,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-311",
+    "sample_id": "CleanVulContextAssembler-309",
     "commit_url": "https://github.com/web2py/web2py/commit/944d8bd8f3c5cf8ae296fc03d149056c65358426",
     "repo_url": "https://github.com/web2py/web2py",
     "fix_hash": "944d8bd8f3c5cf8ae296fc03d149056c65358426",
@@ -4354,7 +4326,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-312",
+    "sample_id": "CleanVulContextAssembler-310",
     "commit_url": "https://github.com/web2py/web2py/commit/944d8bd8f3c5cf8ae296fc03d149056c65358426",
     "repo_url": "https://github.com/web2py/web2py",
     "fix_hash": "944d8bd8f3c5cf8ae296fc03d149056c65358426",
@@ -4368,7 +4340,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-313",
+    "sample_id": "CleanVulContextAssembler-311",
     "commit_url": "https://github.com/pyload/pyload/commit/c035714c0596b704b11af0f8a669352f128ad2d9",
     "repo_url": "https://github.com/pyload/pyload",
     "fix_hash": "c035714c0596b704b11af0f8a669352f128ad2d9",
@@ -4382,7 +4354,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-314",
+    "sample_id": "CleanVulContextAssembler-312",
     "commit_url": "https://github.com/pyload/pyload/commit/c035714c0596b704b11af0f8a669352f128ad2d9",
     "repo_url": "https://github.com/pyload/pyload",
     "fix_hash": "c035714c0596b704b11af0f8a669352f128ad2d9",
@@ -4396,7 +4368,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-315",
+    "sample_id": "CleanVulContextAssembler-313",
     "commit_url": "https://github.com/OpenKMIP/PyKMIP/commit/3a7b880bdf70d295ed8af3a5880bab65fa6b3932",
     "repo_url": "https://github.com/OpenKMIP/PyKMIP",
     "fix_hash": "3a7b880bdf70d295ed8af3a5880bab65fa6b3932",
@@ -4410,7 +4382,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-316",
+    "sample_id": "CleanVulContextAssembler-314",
     "commit_url": "https://github.com/OpenKMIP/PyKMIP/commit/3a7b880bdf70d295ed8af3a5880bab65fa6b3932",
     "repo_url": "https://github.com/OpenKMIP/PyKMIP",
     "fix_hash": "3a7b880bdf70d295ed8af3a5880bab65fa6b3932",
@@ -4424,7 +4396,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-317",
+    "sample_id": "CleanVulContextAssembler-315",
     "commit_url": "https://github.com/IdentityPython/pysaml2/commit/5e9d5acbcd8ae45c4e736ac521fd2df5b1c62e25",
     "repo_url": "https://github.com/IdentityPython/pysaml2",
     "fix_hash": "5e9d5acbcd8ae45c4e736ac521fd2df5b1c62e25",
@@ -4438,7 +4410,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-318",
+    "sample_id": "CleanVulContextAssembler-316",
     "commit_url": "https://github.com/IdentityPython/pysaml2/commit/5e9d5acbcd8ae45c4e736ac521fd2df5b1c62e25",
     "repo_url": "https://github.com/IdentityPython/pysaml2",
     "fix_hash": "5e9d5acbcd8ae45c4e736ac521fd2df5b1c62e25",
@@ -4452,7 +4424,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-319",
+    "sample_id": "CleanVulContextAssembler-317",
     "commit_url": "https://github.com/octoprint/octoprint/commit/3cca3a43f3d085e9bbe5a5840c8255bb1b5d052e",
     "repo_url": "https://github.com/octoprint/octoprint",
     "fix_hash": "3cca3a43f3d085e9bbe5a5840c8255bb1b5d052e",
@@ -4466,7 +4438,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-320",
+    "sample_id": "CleanVulContextAssembler-318",
     "commit_url": "https://github.com/octoprint/octoprint/commit/3cca3a43f3d085e9bbe5a5840c8255bb1b5d052e",
     "repo_url": "https://github.com/octoprint/octoprint",
     "fix_hash": "3cca3a43f3d085e9bbe5a5840c8255bb1b5d052e",
@@ -4480,7 +4452,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-321",
+    "sample_id": "CleanVulContextAssembler-319",
     "commit_url": "https://github.com/jupyter-server/jupyter_server/commit/290362593b2ffb23c59f8114d76f77875de4b925",
     "repo_url": "https://github.com/jupyter-server/jupyter_server",
     "fix_hash": "290362593b2ffb23c59f8114d76f77875de4b925",
@@ -4494,7 +4466,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-322",
+    "sample_id": "CleanVulContextAssembler-320",
     "commit_url": "https://github.com/jupyter-server/jupyter_server/commit/290362593b2ffb23c59f8114d76f77875de4b925",
     "repo_url": "https://github.com/jupyter-server/jupyter_server",
     "fix_hash": "290362593b2ffb23c59f8114d76f77875de4b925",
@@ -4508,7 +4480,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-323",
+    "sample_id": "CleanVulContextAssembler-321",
     "commit_url": "https://github.com/morpheus65535/bazarr/commit/17add7fbb3ae1919a40d505470d499d46df9ae6b",
     "repo_url": "https://github.com/morpheus65535/bazarr",
     "fix_hash": "17add7fbb3ae1919a40d505470d499d46df9ae6b",
@@ -4522,7 +4494,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-324",
+    "sample_id": "CleanVulContextAssembler-322",
     "commit_url": "https://github.com/morpheus65535/bazarr/commit/17add7fbb3ae1919a40d505470d499d46df9ae6b",
     "repo_url": "https://github.com/morpheus65535/bazarr",
     "fix_hash": "17add7fbb3ae1919a40d505470d499d46df9ae6b",
@@ -4536,7 +4508,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-325",
+    "sample_id": "CleanVulContextAssembler-323",
     "commit_url": "https://github.com/wagtail/wagtail/commit/5be2b1ed55fd7259dfdf2c82e7701dba407b8b62",
     "repo_url": "https://github.com/wagtail/wagtail",
     "fix_hash": "5be2b1ed55fd7259dfdf2c82e7701dba407b8b62",
@@ -4550,7 +4522,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-326",
+    "sample_id": "CleanVulContextAssembler-324",
     "commit_url": "https://github.com/wagtail/wagtail/commit/5be2b1ed55fd7259dfdf2c82e7701dba407b8b62",
     "repo_url": "https://github.com/wagtail/wagtail",
     "fix_hash": "5be2b1ed55fd7259dfdf2c82e7701dba407b8b62",
@@ -4564,7 +4536,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-327",
+    "sample_id": "CleanVulContextAssembler-325",
     "commit_url": "https://github.com/DEMON1A/Discord-Recon/commit/f9cb0f67177f5e2f1022295ca8e641e47837ec7a",
     "repo_url": "https://github.com/DEMON1A/Discord-Recon",
     "fix_hash": "f9cb0f67177f5e2f1022295ca8e641e47837ec7a",
@@ -4578,7 +4550,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-328",
+    "sample_id": "CleanVulContextAssembler-326",
     "commit_url": "https://github.com/DEMON1A/Discord-Recon/commit/f9cb0f67177f5e2f1022295ca8e641e47837ec7a",
     "repo_url": "https://github.com/DEMON1A/Discord-Recon",
     "fix_hash": "f9cb0f67177f5e2f1022295ca8e641e47837ec7a",
@@ -4592,7 +4564,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-329",
+    "sample_id": "CleanVulContextAssembler-327",
     "commit_url": "https://github.com/openstack/swauth/commit/70af7986265a3defea054c46efc82d0698917298",
     "repo_url": "https://github.com/openstack/swauth",
     "fix_hash": "70af7986265a3defea054c46efc82d0698917298",
@@ -4606,7 +4578,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-330",
+    "sample_id": "CleanVulContextAssembler-328",
     "commit_url": "https://github.com/openstack/swauth/commit/70af7986265a3defea054c46efc82d0698917298",
     "repo_url": "https://github.com/openstack/swauth",
     "fix_hash": "70af7986265a3defea054c46efc82d0698917298",
@@ -4620,7 +4592,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-331",
+    "sample_id": "CleanVulContextAssembler-329",
     "commit_url": "https://github.com/paxswill/evesrp/commit/9e03f68e46e85ca9c9694a6971859b3ee66f0240",
     "repo_url": "https://github.com/paxswill/evesrp",
     "fix_hash": "9e03f68e46e85ca9c9694a6971859b3ee66f0240",
@@ -4634,7 +4606,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-332",
+    "sample_id": "CleanVulContextAssembler-330",
     "commit_url": "https://github.com/paxswill/evesrp/commit/9e03f68e46e85ca9c9694a6971859b3ee66f0240",
     "repo_url": "https://github.com/paxswill/evesrp",
     "fix_hash": "9e03f68e46e85ca9c9694a6971859b3ee66f0240",
@@ -4648,7 +4620,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-333",
+    "sample_id": "CleanVulContextAssembler-331",
     "commit_url": "https://github.com/kakwa/ldapcherry/commit/6f98076281e9452fdb1adcd1bcbb70a6f968ade9",
     "repo_url": "https://github.com/kakwa/ldapcherry",
     "fix_hash": "6f98076281e9452fdb1adcd1bcbb70a6f968ade9",
@@ -4662,7 +4634,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-334",
+    "sample_id": "CleanVulContextAssembler-332",
     "commit_url": "https://github.com/kakwa/ldapcherry/commit/6f98076281e9452fdb1adcd1bcbb70a6f968ade9",
     "repo_url": "https://github.com/kakwa/ldapcherry",
     "fix_hash": "6f98076281e9452fdb1adcd1bcbb70a6f968ade9",
@@ -4676,7 +4648,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-335",
+    "sample_id": "CleanVulContextAssembler-333",
     "commit_url": "https://github.com/nicotine-plus/nicotine-plus/commit/0e3e2fac27a518f0a84330f1ddf1193424522045",
     "repo_url": "https://github.com/nicotine-plus/nicotine-plus",
     "fix_hash": "0e3e2fac27a518f0a84330f1ddf1193424522045",
@@ -4690,7 +4662,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-336",
+    "sample_id": "CleanVulContextAssembler-334",
     "commit_url": "https://github.com/nicotine-plus/nicotine-plus/commit/0e3e2fac27a518f0a84330f1ddf1193424522045",
     "repo_url": "https://github.com/nicotine-plus/nicotine-plus",
     "fix_hash": "0e3e2fac27a518f0a84330f1ddf1193424522045",
@@ -4704,7 +4676,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-337",
+    "sample_id": "CleanVulContextAssembler-335",
     "commit_url": "https://github.com/ikus060/rdiffweb/commit/b78ec09f4582e363f6f449df6f987127e126c311",
     "repo_url": "https://github.com/ikus060/rdiffweb",
     "fix_hash": "b78ec09f4582e363f6f449df6f987127e126c311",
@@ -4718,7 +4690,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-338",
+    "sample_id": "CleanVulContextAssembler-336",
     "commit_url": "https://github.com/ikus060/rdiffweb/commit/b78ec09f4582e363f6f449df6f987127e126c311",
     "repo_url": "https://github.com/ikus060/rdiffweb",
     "fix_hash": "b78ec09f4582e363f6f449df6f987127e126c311",
@@ -4732,7 +4704,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-339",
+    "sample_id": "CleanVulContextAssembler-337",
     "commit_url": "https://github.com/jupyter-server/jupyter_server/commit/85e4abccf6ea9321d29153f73b0bd72ccb3a6bca",
     "repo_url": "https://github.com/jupyter-server/jupyter_server",
     "fix_hash": "85e4abccf6ea9321d29153f73b0bd72ccb3a6bca",
@@ -4746,7 +4718,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-340",
+    "sample_id": "CleanVulContextAssembler-338",
     "commit_url": "https://github.com/jupyter-server/jupyter_server/commit/85e4abccf6ea9321d29153f73b0bd72ccb3a6bca",
     "repo_url": "https://github.com/jupyter-server/jupyter_server",
     "fix_hash": "85e4abccf6ea9321d29153f73b0bd72ccb3a6bca",
@@ -4760,7 +4732,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-341",
+    "sample_id": "CleanVulContextAssembler-339",
     "commit_url": "https://github.com/ikus060/rdiffweb/commit/20fc0d304412cc569b21f31e52cb8b94094d6314",
     "repo_url": "https://github.com/ikus060/rdiffweb",
     "fix_hash": "20fc0d304412cc569b21f31e52cb8b94094d6314",
@@ -4774,7 +4746,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-342",
+    "sample_id": "CleanVulContextAssembler-340",
     "commit_url": "https://github.com/ikus060/rdiffweb/commit/20fc0d304412cc569b21f31e52cb8b94094d6314",
     "repo_url": "https://github.com/ikus060/rdiffweb",
     "fix_hash": "20fc0d304412cc569b21f31e52cb8b94094d6314",
@@ -4788,7 +4760,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-343",
+    "sample_id": "CleanVulContextAssembler-341",
     "commit_url": "https://github.com/orchest/orchest/commit/77574c40f8c1a9e4b93ffc94460b335d9a8b87af",
     "repo_url": "https://github.com/orchest/orchest",
     "fix_hash": "77574c40f8c1a9e4b93ffc94460b335d9a8b87af",
@@ -4802,7 +4774,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-344",
+    "sample_id": "CleanVulContextAssembler-342",
     "commit_url": "https://github.com/orchest/orchest/commit/77574c40f8c1a9e4b93ffc94460b335d9a8b87af",
     "repo_url": "https://github.com/orchest/orchest",
     "fix_hash": "77574c40f8c1a9e4b93ffc94460b335d9a8b87af",
@@ -4816,7 +4788,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-345",
+    "sample_id": "CleanVulContextAssembler-343",
     "commit_url": "https://github.com/blankenberg/galaxy-data-resource/commit/50d65f45d3f5be5d1fbff2e45ac5cec075f07d42",
     "repo_url": "https://github.com/blankenberg/galaxy-data-resource",
     "fix_hash": "50d65f45d3f5be5d1fbff2e45ac5cec075f07d42",
@@ -4830,7 +4802,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-346",
+    "sample_id": "CleanVulContextAssembler-344",
     "commit_url": "https://github.com/blankenberg/galaxy-data-resource/commit/50d65f45d3f5be5d1fbff2e45ac5cec075f07d42",
     "repo_url": "https://github.com/blankenberg/galaxy-data-resource",
     "fix_hash": "50d65f45d3f5be5d1fbff2e45ac5cec075f07d42",
@@ -4844,7 +4816,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-347",
+    "sample_id": "CleanVulContextAssembler-345",
     "commit_url": "https://github.com/openedx/xblock-drag-and-drop-v2/commit/68887d1b4a44325d2de7573d450e41129ba98b1a",
     "repo_url": "https://github.com/openedx/xblock-drag-and-drop-v2",
     "fix_hash": "68887d1b4a44325d2de7573d450e41129ba98b1a",
@@ -4858,7 +4830,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-348",
+    "sample_id": "CleanVulContextAssembler-346",
     "commit_url": "https://github.com/openedx/xblock-drag-and-drop-v2/commit/68887d1b4a44325d2de7573d450e41129ba98b1a",
     "repo_url": "https://github.com/openedx/xblock-drag-and-drop-v2",
     "fix_hash": "68887d1b4a44325d2de7573d450e41129ba98b1a",
@@ -4872,7 +4844,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-349",
+    "sample_id": "CleanVulContextAssembler-347",
     "commit_url": "https://github.com/zulip/zulip/commit/1195841dfb9aa26b3b0dabc6f05d72e4af25be3e",
     "repo_url": "https://github.com/zulip/zulip",
     "fix_hash": "1195841dfb9aa26b3b0dabc6f05d72e4af25be3e",
@@ -4886,7 +4858,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-350",
+    "sample_id": "CleanVulContextAssembler-348",
     "commit_url": "https://github.com/zulip/zulip/commit/1195841dfb9aa26b3b0dabc6f05d72e4af25be3e",
     "repo_url": "https://github.com/zulip/zulip",
     "fix_hash": "1195841dfb9aa26b3b0dabc6f05d72e4af25be3e",
@@ -4900,7 +4872,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-351",
+    "sample_id": "CleanVulContextAssembler-349",
     "commit_url": "https://github.com/keylime/keylime/commit/ea5d0373fa2c050d5d95404eb779be7e8327b911",
     "repo_url": "https://github.com/keylime/keylime",
     "fix_hash": "ea5d0373fa2c050d5d95404eb779be7e8327b911",
@@ -4914,7 +4886,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-352",
+    "sample_id": "CleanVulContextAssembler-350",
     "commit_url": "https://github.com/keylime/keylime/commit/ea5d0373fa2c050d5d95404eb779be7e8327b911",
     "repo_url": "https://github.com/keylime/keylime",
     "fix_hash": "ea5d0373fa2c050d5d95404eb779be7e8327b911",
@@ -4928,7 +4900,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-353",
+    "sample_id": "CleanVulContextAssembler-351",
     "commit_url": "https://github.com/apache/incubator-openwhisk-runtime-docker/commit/891896f25c39bc336ef6dda53f80f466ac4ca3c8",
     "repo_url": "https://github.com/apache/incubator-openwhisk-runtime-docker",
     "fix_hash": "891896f25c39bc336ef6dda53f80f466ac4ca3c8",
@@ -4942,7 +4914,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-354",
+    "sample_id": "CleanVulContextAssembler-352",
     "commit_url": "https://github.com/apache/incubator-openwhisk-runtime-docker/commit/891896f25c39bc336ef6dda53f80f466ac4ca3c8",
     "repo_url": "https://github.com/apache/incubator-openwhisk-runtime-docker",
     "fix_hash": "891896f25c39bc336ef6dda53f80f466ac4ca3c8",
@@ -4956,7 +4928,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-355",
+    "sample_id": "CleanVulContextAssembler-353",
     "commit_url": "https://github.com/Bcfg2/bcfg2/commit/a524967e8d5c4c22e49cd619aed20c87a316c0be",
     "repo_url": "https://github.com/Bcfg2/bcfg2",
     "fix_hash": "a524967e8d5c4c22e49cd619aed20c87a316c0be",
@@ -4970,7 +4942,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-356",
+    "sample_id": "CleanVulContextAssembler-354",
     "commit_url": "https://github.com/Bcfg2/bcfg2/commit/a524967e8d5c4c22e49cd619aed20c87a316c0be",
     "repo_url": "https://github.com/Bcfg2/bcfg2",
     "fix_hash": "a524967e8d5c4c22e49cd619aed20c87a316c0be",
@@ -4984,7 +4956,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-357",
+    "sample_id": "CleanVulContextAssembler-355",
     "commit_url": "https://github.com/zopefoundation/Zope/commit/603b0a12881c90a072a7a65e32d47ed898ce37cb",
     "repo_url": "https://github.com/zopefoundation/Zope",
     "fix_hash": "603b0a12881c90a072a7a65e32d47ed898ce37cb",
@@ -4998,7 +4970,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-358",
+    "sample_id": "CleanVulContextAssembler-356",
     "commit_url": "https://github.com/zopefoundation/Zope/commit/603b0a12881c90a072a7a65e32d47ed898ce37cb",
     "repo_url": "https://github.com/zopefoundation/Zope",
     "fix_hash": "603b0a12881c90a072a7a65e32d47ed898ce37cb",
@@ -5012,7 +4984,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-359",
+    "sample_id": "CleanVulContextAssembler-357",
     "commit_url": "https://github.com/gzpan123/pip/commit/a4c735b14a62f9cb864533808ac63936704f2ace",
     "repo_url": "https://github.com/gzpan123/pip",
     "fix_hash": "a4c735b14a62f9cb864533808ac63936704f2ace",
@@ -5026,7 +4998,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-360",
+    "sample_id": "CleanVulContextAssembler-358",
     "commit_url": "https://github.com/gzpan123/pip/commit/a4c735b14a62f9cb864533808ac63936704f2ace",
     "repo_url": "https://github.com/gzpan123/pip",
     "fix_hash": "a4c735b14a62f9cb864533808ac63936704f2ace",
@@ -5040,7 +5012,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-361",
+    "sample_id": "CleanVulContextAssembler-359",
     "commit_url": "https://github.com/MechanicalSoup/MechanicalSoup/commit/d57c4a269bba3b9a0c5bfa20292955b849006d9e",
     "repo_url": "https://github.com/MechanicalSoup/MechanicalSoup",
     "fix_hash": "d57c4a269bba3b9a0c5bfa20292955b849006d9e",
@@ -5054,7 +5026,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-362",
+    "sample_id": "CleanVulContextAssembler-360",
     "commit_url": "https://github.com/MechanicalSoup/MechanicalSoup/commit/d57c4a269bba3b9a0c5bfa20292955b849006d9e",
     "repo_url": "https://github.com/MechanicalSoup/MechanicalSoup",
     "fix_hash": "d57c4a269bba3b9a0c5bfa20292955b849006d9e",
@@ -5068,7 +5040,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-363",
+    "sample_id": "CleanVulContextAssembler-361",
     "commit_url": "https://github.com/aio-libs/aiohttp/commit/2545222a3853e31ace15d87ae0e2effb7da0c96b",
     "repo_url": "https://github.com/aio-libs/aiohttp",
     "fix_hash": "2545222a3853e31ace15d87ae0e2effb7da0c96b",
@@ -5082,7 +5054,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-364",
+    "sample_id": "CleanVulContextAssembler-362",
     "commit_url": "https://github.com/aio-libs/aiohttp/commit/2545222a3853e31ace15d87ae0e2effb7da0c96b",
     "repo_url": "https://github.com/aio-libs/aiohttp",
     "fix_hash": "2545222a3853e31ace15d87ae0e2effb7da0c96b",
@@ -5096,7 +5068,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-365",
+    "sample_id": "CleanVulContextAssembler-363",
     "commit_url": "https://github.com/horazont/aioxmpp/commit/29ff0838a40f58efe30a4bbcea95aa8dab7da475",
     "repo_url": "https://github.com/horazont/aioxmpp",
     "fix_hash": "29ff0838a40f58efe30a4bbcea95aa8dab7da475",
@@ -5110,7 +5082,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-366",
+    "sample_id": "CleanVulContextAssembler-364",
     "commit_url": "https://github.com/horazont/aioxmpp/commit/29ff0838a40f58efe30a4bbcea95aa8dab7da475",
     "repo_url": "https://github.com/horazont/aioxmpp",
     "fix_hash": "29ff0838a40f58efe30a4bbcea95aa8dab7da475",
@@ -5124,7 +5096,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-367",
+    "sample_id": "CleanVulContextAssembler-365",
     "commit_url": "https://github.com/piccolo-orm/piccolo/commit/82679eb8cd1449cf31d87c9914a072e70168b6eb",
     "repo_url": "https://github.com/piccolo-orm/piccolo",
     "fix_hash": "82679eb8cd1449cf31d87c9914a072e70168b6eb",
@@ -5138,7 +5110,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-368",
+    "sample_id": "CleanVulContextAssembler-366",
     "commit_url": "https://github.com/piccolo-orm/piccolo/commit/82679eb8cd1449cf31d87c9914a072e70168b6eb",
     "repo_url": "https://github.com/piccolo-orm/piccolo",
     "fix_hash": "82679eb8cd1449cf31d87c9914a072e70168b6eb",
@@ -5152,7 +5124,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-369",
+    "sample_id": "CleanVulContextAssembler-367",
     "commit_url": "https://github.com/ethyca/fides/commit/5989b5fa744c8d8c340963b895a054883549358a",
     "repo_url": "https://github.com/ethyca/fides",
     "fix_hash": "5989b5fa744c8d8c340963b895a054883549358a",
@@ -5166,7 +5138,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-370",
+    "sample_id": "CleanVulContextAssembler-368",
     "commit_url": "https://github.com/ethyca/fides/commit/5989b5fa744c8d8c340963b895a054883549358a",
     "repo_url": "https://github.com/ethyca/fides",
     "fix_hash": "5989b5fa744c8d8c340963b895a054883549358a",
@@ -5180,7 +5152,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-371",
+    "sample_id": "CleanVulContextAssembler-369",
     "commit_url": "https://github.com/gradio-app/gradio/commit/41bd3645bdb616e1248b2167ca83636a2653f781",
     "repo_url": "https://github.com/gradio-app/gradio",
     "fix_hash": "41bd3645bdb616e1248b2167ca83636a2653f781",
@@ -5194,7 +5166,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-372",
+    "sample_id": "CleanVulContextAssembler-370",
     "commit_url": "https://github.com/gradio-app/gradio/commit/41bd3645bdb616e1248b2167ca83636a2653f781",
     "repo_url": "https://github.com/gradio-app/gradio",
     "fix_hash": "41bd3645bdb616e1248b2167ca83636a2653f781",
@@ -5208,7 +5180,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-373",
+    "sample_id": "CleanVulContextAssembler-371",
     "commit_url": "https://github.com/qutebrowser/qutebrowser/commit/4c9360237f186681b1e3f2a0f30c45161cf405c7",
     "repo_url": "https://github.com/qutebrowser/qutebrowser",
     "fix_hash": "4c9360237f186681b1e3f2a0f30c45161cf405c7",
@@ -5222,7 +5194,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-374",
+    "sample_id": "CleanVulContextAssembler-372",
     "commit_url": "https://github.com/qutebrowser/qutebrowser/commit/4c9360237f186681b1e3f2a0f30c45161cf405c7",
     "repo_url": "https://github.com/qutebrowser/qutebrowser",
     "fix_hash": "4c9360237f186681b1e3f2a0f30c45161cf405c7",
@@ -5236,7 +5208,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-375",
+    "sample_id": "CleanVulContextAssembler-373",
     "commit_url": "https://github.com/Legrandin/pycrypto/commit/9f912f13df99ad3421eff360d6a62d7dbec755c2",
     "repo_url": "https://github.com/Legrandin/pycrypto",
     "fix_hash": "9f912f13df99ad3421eff360d6a62d7dbec755c2",
@@ -5250,7 +5222,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-376",
+    "sample_id": "CleanVulContextAssembler-374",
     "commit_url": "https://github.com/Legrandin/pycrypto/commit/9f912f13df99ad3421eff360d6a62d7dbec755c2",
     "repo_url": "https://github.com/Legrandin/pycrypto",
     "fix_hash": "9f912f13df99ad3421eff360d6a62d7dbec755c2",
@@ -5264,7 +5236,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-377",
+    "sample_id": "CleanVulContextAssembler-375",
     "commit_url": "https://github.com/pytorchlightning/pytorch-lightning/commit/8b7a12c52e52a06408e9231647839ddb4665e8ae",
     "repo_url": "https://github.com/pytorchlightning/pytorch-lightning",
     "fix_hash": "8b7a12c52e52a06408e9231647839ddb4665e8ae",
@@ -5278,7 +5250,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-378",
+    "sample_id": "CleanVulContextAssembler-376",
     "commit_url": "https://github.com/pytorchlightning/pytorch-lightning/commit/8b7a12c52e52a06408e9231647839ddb4665e8ae",
     "repo_url": "https://github.com/pytorchlightning/pytorch-lightning",
     "fix_hash": "8b7a12c52e52a06408e9231647839ddb4665e8ae",
@@ -5292,7 +5264,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-379",
+    "sample_id": "CleanVulContextAssembler-377",
     "commit_url": "https://github.com/zulip/zulip/commit/a014ef75a3a0ed7f24ebb157632ba58751e732c6",
     "repo_url": "https://github.com/zulip/zulip",
     "fix_hash": "a014ef75a3a0ed7f24ebb157632ba58751e732c6",
@@ -5306,7 +5278,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-380",
+    "sample_id": "CleanVulContextAssembler-378",
     "commit_url": "https://github.com/zulip/zulip/commit/a014ef75a3a0ed7f24ebb157632ba58751e732c6",
     "repo_url": "https://github.com/zulip/zulip",
     "fix_hash": "a014ef75a3a0ed7f24ebb157632ba58751e732c6",
@@ -5320,7 +5292,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-381",
+    "sample_id": "CleanVulContextAssembler-379",
     "commit_url": "https://github.com/adamghill/django-unicorn/commit/3a832a9e3f6455ddd3b87f646247269918ad10c6",
     "repo_url": "https://github.com/adamghill/django-unicorn",
     "fix_hash": "3a832a9e3f6455ddd3b87f646247269918ad10c6",
@@ -5334,7 +5306,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-382",
+    "sample_id": "CleanVulContextAssembler-380",
     "commit_url": "https://github.com/adamghill/django-unicorn/commit/3a832a9e3f6455ddd3b87f646247269918ad10c6",
     "repo_url": "https://github.com/adamghill/django-unicorn",
     "fix_hash": "3a832a9e3f6455ddd3b87f646247269918ad10c6",
@@ -5348,7 +5320,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-383",
+    "sample_id": "CleanVulContextAssembler-381",
     "commit_url": "https://github.com/djblets/djblets/commit/77ac64642ad530bf69e390c51fc6fdcb8914c8e7",
     "repo_url": "https://github.com/djblets/djblets",
     "fix_hash": "77ac64642ad530bf69e390c51fc6fdcb8914c8e7",
@@ -5362,7 +5334,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-384",
+    "sample_id": "CleanVulContextAssembler-382",
     "commit_url": "https://github.com/djblets/djblets/commit/77ac64642ad530bf69e390c51fc6fdcb8914c8e7",
     "repo_url": "https://github.com/djblets/djblets",
     "fix_hash": "77ac64642ad530bf69e390c51fc6fdcb8914c8e7",
@@ -5376,7 +5348,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-385",
+    "sample_id": "CleanVulContextAssembler-383",
     "commit_url": "https://github.com/mozilla/bleach/commit/c5df5789ec3471a31311f42c2d19fc2cf21b35ef",
     "repo_url": "https://github.com/mozilla/bleach",
     "fix_hash": "c5df5789ec3471a31311f42c2d19fc2cf21b35ef",
@@ -5390,7 +5362,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-386",
+    "sample_id": "CleanVulContextAssembler-384",
     "commit_url": "https://github.com/mozilla/bleach/commit/c5df5789ec3471a31311f42c2d19fc2cf21b35ef",
     "repo_url": "https://github.com/mozilla/bleach",
     "fix_hash": "c5df5789ec3471a31311f42c2d19fc2cf21b35ef",
@@ -5404,7 +5376,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-387",
+    "sample_id": "CleanVulContextAssembler-385",
     "commit_url": "https://github.com/yogeshojha/rengine/commit/158367a231335026b8dba633a76b44de290ad37c",
     "repo_url": "https://github.com/yogeshojha/rengine",
     "fix_hash": "158367a231335026b8dba633a76b44de290ad37c",
@@ -5418,7 +5390,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-388",
+    "sample_id": "CleanVulContextAssembler-386",
     "commit_url": "https://github.com/yogeshojha/rengine/commit/158367a231335026b8dba633a76b44de290ad37c",
     "repo_url": "https://github.com/yogeshojha/rengine",
     "fix_hash": "158367a231335026b8dba633a76b44de290ad37c",
@@ -5432,7 +5404,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-389",
+    "sample_id": "CleanVulContextAssembler-387",
     "commit_url": "https://github.com/ikus060/rdiffweb/commit/422791ea45713aaaa865bdca74addb9fffd93a71",
     "repo_url": "https://github.com/ikus060/rdiffweb",
     "fix_hash": "422791ea45713aaaa865bdca74addb9fffd93a71",
@@ -5446,7 +5418,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-390",
+    "sample_id": "CleanVulContextAssembler-388",
     "commit_url": "https://github.com/ikus060/rdiffweb/commit/422791ea45713aaaa865bdca74addb9fffd93a71",
     "repo_url": "https://github.com/ikus060/rdiffweb",
     "fix_hash": "422791ea45713aaaa865bdca74addb9fffd93a71",
@@ -5460,7 +5432,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-391",
+    "sample_id": "CleanVulContextAssembler-389",
     "commit_url": "https://github.com/solj/bcfg2/commit/46795ae451ca6ede55a0edeb726978aef4684b53",
     "repo_url": "https://github.com/solj/bcfg2",
     "fix_hash": "46795ae451ca6ede55a0edeb726978aef4684b53",
@@ -5474,7 +5446,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-392",
+    "sample_id": "CleanVulContextAssembler-390",
     "commit_url": "https://github.com/solj/bcfg2/commit/46795ae451ca6ede55a0edeb726978aef4684b53",
     "repo_url": "https://github.com/solj/bcfg2",
     "fix_hash": "46795ae451ca6ede55a0edeb726978aef4684b53",
@@ -5488,7 +5460,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-393",
+    "sample_id": "CleanVulContextAssembler-391",
     "commit_url": "https://github.com/web2py/web2py/commit/d9805606f88f00c0be56438247605cefde73e14e",
     "repo_url": "https://github.com/web2py/web2py",
     "fix_hash": "d9805606f88f00c0be56438247605cefde73e14e",
@@ -5502,7 +5474,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-394",
+    "sample_id": "CleanVulContextAssembler-392",
     "commit_url": "https://github.com/web2py/web2py/commit/d9805606f88f00c0be56438247605cefde73e14e",
     "repo_url": "https://github.com/web2py/web2py",
     "fix_hash": "d9805606f88f00c0be56438247605cefde73e14e",
@@ -5516,7 +5488,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-395",
+    "sample_id": "CleanVulContextAssembler-393",
     "commit_url": "https://github.com/MobSF/Mobile-Security-Framework-MobSF/commit/b9cdd1f52bdf127cf33bb1be369e374a2855f8e6",
     "repo_url": "https://github.com/MobSF/Mobile-Security-Framework-MobSF",
     "fix_hash": "b9cdd1f52bdf127cf33bb1be369e374a2855f8e6",
@@ -5530,7 +5502,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-396",
+    "sample_id": "CleanVulContextAssembler-394",
     "commit_url": "https://github.com/MobSF/Mobile-Security-Framework-MobSF/commit/b9cdd1f52bdf127cf33bb1be369e374a2855f8e6",
     "repo_url": "https://github.com/MobSF/Mobile-Security-Framework-MobSF",
     "fix_hash": "b9cdd1f52bdf127cf33bb1be369e374a2855f8e6",
@@ -5544,7 +5516,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-397",
+    "sample_id": "CleanVulContextAssembler-395",
     "commit_url": "https://github.com/openstack/nova/commit/9f9e9da777161426a6f8cb4314b78e09beac2978",
     "repo_url": "https://github.com/openstack/nova",
     "fix_hash": "9f9e9da777161426a6f8cb4314b78e09beac2978",
@@ -5558,7 +5530,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-398",
+    "sample_id": "CleanVulContextAssembler-396",
     "commit_url": "https://github.com/openstack/nova/commit/9f9e9da777161426a6f8cb4314b78e09beac2978",
     "repo_url": "https://github.com/openstack/nova",
     "fix_hash": "9f9e9da777161426a6f8cb4314b78e09beac2978",
@@ -5572,7 +5544,7 @@
     "is_vulnerable": false
   },
   {
-    "sample_id": "CleanVulContextAssembler-399",
+    "sample_id": "CleanVulContextAssembler-397",
     "commit_url": "https://github.com/qutebrowser/qutebrowser/commit/4020210b193f77cf1785b21717f6ef7c5de5f0f8",
     "repo_url": "https://github.com/qutebrowser/qutebrowser",
     "fix_hash": "4020210b193f77cf1785b21717f6ef7c5de5f0f8",
@@ -5586,7 +5558,7 @@
     "is_vulnerable": true
   },
   {
-    "sample_id": "CleanVulContextAssembler-400",
+    "sample_id": "CleanVulContextAssembler-398",
     "commit_url": "https://github.com/qutebrowser/qutebrowser/commit/4020210b193f77cf1785b21717f6ef7c5de5f0f8",
     "repo_url": "https://github.com/qutebrowser/qutebrowser",
     "fix_hash": "4020210b193f77cf1785b21717f6ef7c5de5f0f8",
@@ -5597,6 +5569,34 @@
     "cwe_ids": [],
     "vulnerability_score": 4,
     "commit_msg": "Security: Remember hosts with ignored cert errors for load status\n\nWithout this change, we only set a flag when a certificate error occurred.\nHowever, when the same certificate error then happens a second time (e.g.\nbecause of a reload or opening the same URL again), we then colored the URL as\nsuccess_https (i.e. green) again.\n\nSee #5403\n\n(cherry picked from commit 021ab572a319ca3db5907a33a59774f502b3b975)",
+    "is_vulnerable": false
+  },
+  {
+    "sample_id": "CleanVulContextAssembler-399",
+    "commit_url": "https://github.com/ganga-devs/ganga/commit/730e7aba192407d35eb37dd7938d49071124be8c",
+    "repo_url": "https://github.com/ganga-devs/ganga",
+    "fix_hash": "730e7aba192407d35eb37dd7938d49071124be8c",
+    "file_name": "ganga/GangaGUI/gui/routes.py",
+    "func_code": "def job_browse(job_id: int, path):\n    \"\"\"\n    Browse directory of the job.\n    :param job_id: int\n    :param path: str\n    \"\"\"\n\n    try:\n        # Query job information\n        job_info = query_internal_api(f\"/internal/jobs/{job_id}\", \"get\")\n\n        # Base directory of the job\n        job_base_dir = os.path.dirname(os.path.dirname(job_info[\"outputdir\"]))\n\n    except Exception as err:\n        # Display error on the GUI\n        flash(str(err), \"danger\")\n        return redirect(url_for(\"job_page\", job_id=job_id))\n\n    # Join the base and the requested path\n    abs_path = os.path.join(job_base_dir, path)\n\n    # URL path variable for going back\n    back_path = os.path.dirname(abs_path).replace(job_base_dir, \"\")\n\n    # If path doesn't exist\n    if not os.path.exists(abs_path):\n        flash(\"Directory for this job does not exist.\", \"warning\")\n        return redirect(url_for(\"job_page\", job_id=job_id))\n\n    # Check if path is a file and send\n    if os.path.isfile(abs_path):\n        return send_file(abs_path)\n\n    files_info = []\n\n    # Show directory contents\n    files = os.listdir(abs_path)\n\n    # Store directory information\n    for file in files:\n        files_info.append({\n            \"file\": file,\n            \"directory\": os.path.isdir(os.path.join(abs_path, file))\n        })\n\n    return render_template('job_dir.html', title=f\"Job {job_id} Directory\",\n                           job_id=job_id,\n                           abs_path=abs_path,\n                           files_info=files_info,\n                           back_path=back_path)",
+    "cve_id": "",
+    "cwe_id": null,
+    "cwe_ids": [],
+    "vulnerability_score": 4,
+    "commit_msg": "# Absolute Path Traversal due to incorrect use of `send_file` call (#2025)\n\nA path traversal attack (also known as directory traversal) aims to access files and directories that are stored outside the web root folder. By manipulating variables that reference files with \u201cdot-dot-slash (../)\u201d sequences and its variations or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system including application source code or configuration and critical system files. This attack is also known as \u201cdot-dot-slash\u201d, \u201cdirectory traversal\u201d, \u201cdirectory climbing\u201d and \u201cbacktracking\u201d.\n\n## Common Weakness Enumeration category\nCWE - 36\n\n## Root Cause Analysis\n\nThe `os.path.join` call is unsafe for use with untrusted input. When the `os.path.join` call encounters an absolute path, it ignores all the parameters it has encountered till that point and starts working with the new absolute path.  Please see the example below.\n```\n>>> import os.path\n>>> static = \"path/to/mySafeStaticDir\"\n>>> malicious = \"/../../../../../etc/passwd\"\n>>> os.path.join(t,malicious)\n'/../../../../../etc/passwd'\n```\nSince the \"malicious\" parameter represents an absolute path, the result of `os.path.join` ignores the static directory completely. Hence, untrusted input is passed via the `os.path.join` call to `flask.send_file` can lead to path traversal attacks.\n\nIn this case, the problems occurs due to the following code :\nhttps://github.com/ganga-devs/ganga/blob/0c0f9e33b36ee7ead0855f1464f8d4efad26bdbc/ganga/GangaGUI/gui/routes.py#L671\n\nHere, the `path` parameter is attacker controlled. This parameter passes through the unsafe `os.path.join` call making the effective directory and filename passed to the `send_file` call attacker controlled. This leads to a path traversal attack.\n\n## Proof of Concept\n\nThe bug can be verified using a proof of concept similar to the one shown below.\n\n```\ncurl --path-as-is 'http://<domain>/job/<int:job_id>/browse///../../../../etc/passwd\"'\n```\n## Remediation\n\nThis can be fixed by preventing flow of untrusted data to the vulnerable `send_file` function. In case the application logic necessiates this behaviour, one can either use the `werkzeug.utils.safe_join` to join untrusted paths or replace `flask.send_file` calls with `flask.send_from_directory` calls.\n\n## Common Vulnerability Scoring System Vector\n\nThe attack can be carried over the network. A complex non-standard configuration or a specialized condition is not required for the attack to be successfully conducted. There is no user interaction required for successful execution. The attack can affect components outside the scope of the target module. The attack can be used to gain access to confidential files like passwords, login credentials and other secrets. It cannot be directly used to affect a change on a system resource. Hence has limited to no impact on integrity. Using this attack vector a attacker may make multiple requests for accessing huge files such as a database. This can lead to a partial system denial service. However, the impact on availability is quite low in this case. Taking this account an appropriate CVSS v3.1 vector would be\n\n(AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L)[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L&version=3.1]\n\nThis gives it a base score of 9.3/10 and a severity rating of critical.\n\n## References\n* [OWASP Path Traversal](https://owasp.org/www-community/attacks/Path_Traversal)\n* github/securitylab#669\n\n### This bug was found using *[CodeQL by Github](https://codeql.github.com/)*\n\nCo-authored-by: Porcupiney Hairs <porucpiney.hairs@protonmail.com>",
+    "is_vulnerable": true
+  },
+  {
+    "sample_id": "CleanVulContextAssembler-400",
+    "commit_url": "https://github.com/ganga-devs/ganga/commit/730e7aba192407d35eb37dd7938d49071124be8c",
+    "repo_url": "https://github.com/ganga-devs/ganga",
+    "fix_hash": "730e7aba192407d35eb37dd7938d49071124be8c",
+    "file_name": "ganga/GangaGUI/gui/routes.py",
+    "func_code": "def job_browse(job_id: int, path):\n    \"\"\"\n    Browse directory of the job.\n    :param job_id: int\n    :param path: str\n    \"\"\"\n\n    try:\n        # Query job information\n        job_info = query_internal_api(f\"/internal/jobs/{job_id}\", \"get\")\n\n        # Base directory of the job\n        job_base_dir = os.path.dirname(os.path.dirname(job_info[\"outputdir\"]))\n\n    except Exception as err:\n        # Display error on the GUI\n        flash(str(err), \"danger\")\n        return redirect(url_for(\"job_page\", job_id=job_id))\n\n    # Join the base and the requested path\n    abs_path = safe_join(job_base_dir, path)\n\n    # URL path variable for going back\n    back_path = os.path.dirname(abs_path).replace(job_base_dir, \"\")\n\n    # If path doesn't exist\n    if not os.path.exists(abs_path):\n        flash(\"Directory for this job does not exist.\", \"warning\")\n        return redirect(url_for(\"job_page\", job_id=job_id))\n\n    # Check if path is a file and send\n    if os.path.isfile(abs_path):\n        return send_file(abs_path)\n\n    files_info = []\n\n    # Show directory contents\n    files = os.listdir(abs_path)\n\n    # Store directory information\n    for file in files:\n        files_info.append({\n            \"file\": file,\n            \"directory\": os.path.isdir(os.path.join(abs_path, file))\n        })\n\n    return render_template('job_dir.html', title=f\"Job {job_id} Directory\",\n                           job_id=job_id,\n                           abs_path=abs_path,\n                           files_info=files_info,\n                           back_path=back_path)",
+    "cve_id": "",
+    "cwe_id": null,
+    "cwe_ids": [],
+    "vulnerability_score": 4,
+    "commit_msg": "# Absolute Path Traversal due to incorrect use of `send_file` call (#2025)\n\nA path traversal attack (also known as directory traversal) aims to access files and directories that are stored outside the web root folder. By manipulating variables that reference files with \u201cdot-dot-slash (../)\u201d sequences and its variations or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system including application source code or configuration and critical system files. This attack is also known as \u201cdot-dot-slash\u201d, \u201cdirectory traversal\u201d, \u201cdirectory climbing\u201d and \u201cbacktracking\u201d.\n\n## Common Weakness Enumeration category\nCWE - 36\n\n## Root Cause Analysis\n\nThe `os.path.join` call is unsafe for use with untrusted input. When the `os.path.join` call encounters an absolute path, it ignores all the parameters it has encountered till that point and starts working with the new absolute path.  Please see the example below.\n```\n>>> import os.path\n>>> static = \"path/to/mySafeStaticDir\"\n>>> malicious = \"/../../../../../etc/passwd\"\n>>> os.path.join(t,malicious)\n'/../../../../../etc/passwd'\n```\nSince the \"malicious\" parameter represents an absolute path, the result of `os.path.join` ignores the static directory completely. Hence, untrusted input is passed via the `os.path.join` call to `flask.send_file` can lead to path traversal attacks.\n\nIn this case, the problems occurs due to the following code :\nhttps://github.com/ganga-devs/ganga/blob/0c0f9e33b36ee7ead0855f1464f8d4efad26bdbc/ganga/GangaGUI/gui/routes.py#L671\n\nHere, the `path` parameter is attacker controlled. This parameter passes through the unsafe `os.path.join` call making the effective directory and filename passed to the `send_file` call attacker controlled. This leads to a path traversal attack.\n\n## Proof of Concept\n\nThe bug can be verified using a proof of concept similar to the one shown below.\n\n```\ncurl --path-as-is 'http://<domain>/job/<int:job_id>/browse///../../../../etc/passwd\"'\n```\n## Remediation\n\nThis can be fixed by preventing flow of untrusted data to the vulnerable `send_file` function. In case the application logic necessiates this behaviour, one can either use the `werkzeug.utils.safe_join` to join untrusted paths or replace `flask.send_file` calls with `flask.send_from_directory` calls.\n\n## Common Vulnerability Scoring System Vector\n\nThe attack can be carried over the network. A complex non-standard configuration or a specialized condition is not required for the attack to be successfully conducted. There is no user interaction required for successful execution. The attack can affect components outside the scope of the target module. The attack can be used to gain access to confidential files like passwords, login credentials and other secrets. It cannot be directly used to affect a change on a system resource. Hence has limited to no impact on integrity. Using this attack vector a attacker may make multiple requests for accessing huge files such as a database. This can lead to a partial system denial service. However, the impact on availability is quite low in this case. Taking this account an appropriate CVSS v3.1 vector would be\n\n(AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L)[https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:L&version=3.1]\n\nThis gives it a base score of 9.3/10 and a severity rating of critical.\n\n## References\n* [OWASP Path Traversal](https://owasp.org/www-community/attacks/Path_Traversal)\n* github/securitylab#669\n\n### This bug was found using *[CodeQL by Github](https://codeql.github.com/)*\n\nCo-authored-by: Porcupiney Hairs <porucpiney.hairs@protonmail.com>",
     "is_vulnerable": false
   }
 ]
