@@ -6,7 +6,7 @@ Both versions exclude the audited wrong labels, use the tuned
 `cpg_structural` / `multiplicative_amplification` coefficients and a 4096-token
 budget, and carry Bandit/Dlint/Semgrep static findings with snippet source maps.
 
-Built with llm_scanner branch `cpg-cross-file-call-resolution` at `cbcd1c8`
+Built with llm_scanner `main` at `cbcd1c8`
 (root/context split: `1437d72`).
 
 ### Rebuild 2026-10-03: cross-file call resolution and class attributes
