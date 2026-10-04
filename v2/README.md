@@ -6,8 +6,19 @@ Both versions exclude the audited wrong labels, use the tuned
 `cpg_structural` / `multiplicative_amplification` coefficients and a 4096-token
 budget, and carry Bandit/Dlint/Semgrep static findings with snippet source maps.
 
-Built with llm_scanner `main` at `cbcd1c8`
+Built with llm_scanner `main` at `c123fb7`
 (root/context split: `1437d72`).
+
+### Rebuild 2026-10-04: resolution and assembler fixes
+
+Rebuilt in place again from the same 355 commits and settings, with llm_scanner
+fixes to symbol and module resolution in the CPG directory builder, bare-name
+calls no longer resolving to same-named methods, hub pruning, and a form-feed
+line shift in the context assembler. Sample ids, labels, roots and root static
+findings are unchanged. Context changed in 162 (`cpg_structural`) and 433
+(`multiplicative_amplification`) of 710 samples; median context size went from
+2.1K to 2.3K and from 4.6K to 5.6K characters. The previous build is commit
+`38208fd` of this repository (llm_scanner `cbcd1c8`).
 
 ### Rebuild 2026-10-03: cross-file call resolution and class attributes
 
