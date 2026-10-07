@@ -3,11 +3,16 @@
 One dataset per context-ranking strategy, all built from the same samples in a
 single pass so the strategies compare directly.
 
-## Top-level files (rebuilt 2026-10-07)
+## Top-level files (rebuilt 2026-10-08)
 
 v2's 710 CleanVul score-4 samples (355 audited vulnerable/fixed pairs, same ids
 and order as `../v2/`), 4096-token budget, per-root ROOT / CONTEXT layout,
-static findings, max call depth 3. Built with llm_scanner `main` at `c123fb7`.
+static findings, max call depth 3. Built with llm_scanner `main` at `2487105`,
+which makes builds deterministic (identical runs give identical files) and
+applies the budget to the rendered text, markers and headers included: no
+sample exceeds 4096 estimated tokens (`len(text) // 3`) except the 6 whose
+roots alone are larger (roots are never truncated). `dummy` keeps the fetch
+order, which is now depth, file, line, id (nearest code first, source order).
 
 | File | Strategy |
 |---|---|
@@ -26,14 +31,11 @@ static findings, max call depth 3. Built with llm_scanner `main` at `c123fb7`.
 | `cleanvul_context_benchmark_dummy.json` | `dummy` |
 | `cleanvul_entries.json` | Source CleanVul entries per sample id |
 
-Roots are identical to `../v2/` in every file. The `cpg_structural` and
-`multiplicative_amplification` files are not byte-identical to `../v2/`: the
-context builder is not fully deterministic between runs (identical runs differ
-for some samples), and here 25 resp. 147 of 710 contexts differ from the `../v2/`
-build. Compare strategies within this directory, which share one run.
+Roots are identical to `../v2/` in every file. Contexts differ from `../v2/`,
+which was built at `c123fb7`, before the determinism and budget fixes.
 
-The previous top-level files (600 samples, flat layout, July 2026) are in this
-repository's history before this commit.
+Earlier top-level builds (the July 600-sample flat-layout set, and the
+2026-10-07 build at `c123fb7`) are in this repository's history.
 
 ## `context_sizes/`
 
